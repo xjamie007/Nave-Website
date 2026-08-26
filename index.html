@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lb">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nave - AI Solutions for Tomorrow</title>
+    <title>Nave | Websäiten, Online-Shops an Applikatiounen</title>
+    <meta name="description" content="Nave baut modern Websäiten, Online-Shops an Applikatiounen fir Betriber a Lëtzebuerg.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -63,6 +64,7 @@
             display: flex;
             gap: 8px;
             margin-left: 30px;
+            flex-shrink: 0;
         }
 
         .language-btn {
@@ -165,6 +167,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            /* mindestens dëse Ofstand tëscht Logo an Navigatioun */
+            gap: 40px;
             z-index: 100;
             transition: var(--transition);
             background: var(--dark-blue) !important;
@@ -197,12 +201,29 @@
         .nav-container {
             display: flex;
             align-items: center;
-            gap: 35px;
+            justify-content: flex-end;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        #appointmentBtn {
+            white-space: nowrap;
+        }
+
+        /* Lénks a riets kréien datselwecht Gewiicht, domat d'Navigatioun
+           an d'Mëtt réckelt. Bewosst OUNI min-width:0, soss géif de
+           Knäppchen zesummegedréckt an op zwou Zeilen ëmbriechen. */
+        .logo {
+            flex: 1 1 0;
+        }
+
+        .nav-container {
+            flex: 1 1 0;
         }
 
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 26px;
             list-style: none;
         }
 
@@ -275,17 +296,27 @@
 
         .menu-bar {
             height: 3px;
-            background: var(--dark-blue);
+            /* Den Header ass donkelblo, dofir muss de Menü-Knäppchen hell sinn */
+            background: var(--white);
             transition: var(--transition);
             border-radius: 2px;
         }
 
-        .menu-bar:nth-child(1) {
-            width: 25px;
+        .menu-bar {
+            width: 26px;
         }
 
-        .menu-bar:nth-child(2) {
-            width: 20px;
+        /* Op X wiesselen, wann de Menü op ass */
+        .menu-toggle.open .menu-bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.open .menu-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open .menu-bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
 
         /* Fullscreen menu */
@@ -371,7 +402,7 @@
         }
 
         .section-title {
-            font-size: 3.2rem;
+            font-size: clamp(1.9rem, 5.5vw, 3.2rem);
             margin-bottom: 40px;
             position: relative;
             display: inline-block;
@@ -410,14 +441,14 @@
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1150px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
         .hero-title {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 7vw, 4.5rem);
             margin-bottom: 25px;
             line-height: 1.15;
             font-weight: 800;
@@ -432,22 +463,27 @@
             transform: translateY(0);
         }
 
-        .hero-subtitle {
-            font-size: 1.6rem;
-            margin-bottom: 50px;
-            opacity: 0.85;
-            font-weight: 400;
+        .hero-tagline {
+            font-size: clamp(1.05rem, 2.3vw, 1.55rem);
+            font-weight: 600;
+            color: var(--light-blue1);
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
         }
 
-        .hero-subtitle.animate {
+        .hero-tagline.animate {
             opacity: 1;
             transform: translateY(0);
         }
 
         .hero-cta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
@@ -551,7 +587,7 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
+            gap: 28px;
             margin-top: 70px;
         }
 
@@ -735,15 +771,17 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             align-items: stretch;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .team-member {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             text-align: center;
             background: rgba(255, 255, 255, 0.6);
             border-radius: 20px;
@@ -1021,6 +1059,38 @@
             box-shadow: 0 8px 20px rgba(249, 134, 45, 0.4);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .form-status {
+            margin-top: 18px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .form-status.visible {
+            display: block;
+        }
+
+        .form-status.success {
+            background: rgba(46, 160, 87, 0.18);
+            border: 1px solid rgba(126, 226, 168, 0.5);
+            color: #8fe9b6;
+        }
+
+        .form-status.error {
+            background: rgba(214, 69, 47, 0.18);
+            border: 1px solid rgba(255, 155, 131, 0.5);
+            color: #ffab95;
+        }
+
         /* Policy content styling */
         .policy-content {
             color: var(--white);
@@ -1109,10 +1179,140 @@
             object-fit: contain;
         }
         
-        /* Responsive styles */
+        /* ---- Kunden ---- */
+        .clients {
+            color: var(--white);
+        }
+
+        .clients-intro {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .clients-intro.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 60px auto 0;
+            max-width: 860px;
+            justify-content: center;
+        }
+
+        .client-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .client-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nëmmen d'Kaarten, déi och e Link sinn, verhalen sech wéi e Knäppchen */
+        a.client-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        a.client-card:hover {
+            border-color: rgba(249, 134, 45, 0.7);
+            background: rgba(255, 255, 255, 0.09);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        a.client-card:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        /* klenge Pfeil, deen weist, datt een dorop drécke kann */
+        a.client-card .client-name::after {
+            content: '\2197';
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--accent);
+            opacity: 0;
+            transform: translate(-4px, 4px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        a.client-card:hover .client-name::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        .client-logo-box {
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .client-logo {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .client-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        /* ==================================================================
+           Responsive: Tablet a Handy
+           ================================================================== */
+
         @media (max-width: 1200px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Hei ass de Burger nach net do, dofir muss d'Kopfzeil méi kompakt ginn */
+        @media (max-width: 1150px) {
+            header {
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-container {
+                gap: 18px;
+            }
+
+            .language-selector {
+                margin-left: 6px;
+            }
+
+            #appointmentBtn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+
+            .logo-image {
+                height: 58px;
+                max-width: 130px;
             }
         }
 
@@ -1120,92 +1320,670 @@
             .nav-links {
                 display: none;
             }
-            
+
             .menu-toggle {
                 display: flex;
             }
-            
-            .hero-title {
-                font-size: 3.5rem;
+
+            /* De Sproochwiessel bleift op all Bildschierm sichtbar.
+               Hie gëtt just méi kompakt, fir datt e nieft dem Menü Plaz huet. */
+            .language-selector {
+                display: flex !important;
+                margin-left: 0;
+                gap: 5px;
             }
-            
-            .section-title {
-                font-size: 2.5rem;
+
+            .language-btn {
+                padding: 8px 10px;
+                font-size: 0.72rem;
+                border-radius: 12px;
+                min-height: 34px;
             }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
+
+            .nav-container {
+                gap: 12px;
             }
-            
+
+            header {
+                gap: 16px;
+            }
+
+            /* De Knäppchen am Header géif op klenge Schiirmer ze vill Plaz huelen.
+               Am Hero an am Footer steet en weiderhin. */
+            #appointmentBtn {
+                display: none;
+            }
+
+            .logo-image {
+                height: 52px;
+                max-width: 120px;
+            }
+
+            section {
+                padding: 90px 24px;
+            }
+
             .team-grid {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
-            
+
             .process-step {
                 flex-direction: column;
                 text-align: center;
-                gap: 30px;
+                gap: 24px;
+                padding: 28px 22px;
             }
-            
+
             .process-step:nth-child(even) {
                 flex-direction: column;
             }
-            
-            .step-visual {
-                flex: 0 0 150px;
-                width: 150px;
-                height: 150px;
-            }
-            
-            .step-icon {
-                font-size: 3rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .cta-title {
-                font-size: 3rem;
+
+            /* Gestapelt ergëtt e säitlecht Erareschen kee Sënn a schéiwt
+               d'Kaarte beim Erakommen aus dem Bild. Dofir vun uewen. */
+            .process-step,
+            .process-step:nth-child(even) {
+                transform: translateY(40px);
             }
 
-            .language-selector {
+            .process-step.animate,
+            .process-step:nth-child(even).animate {
+                transform: translateY(0);
+            }
+
+            .step-visual {
+                flex: 0 0 130px;
+                width: 130px;
+                height: 130px;
+            }
+
+            .step-icon {
+                font-size: 2.6rem;
+            }
+
+            .process-container {
+                gap: 34px;
+            }
+
+            .process-step::after {
                 display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .cta-title {
+                font-size: clamp(1.8rem, 6vw, 3rem);
             }
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.8rem;
+            header {
+                padding: 12px 20px;
             }
-            
-            .hero-subtitle {
-                font-size: 1.3rem;
+
+            section {
+                padding: 76px 16px;
             }
-            
+
+            .hero {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            /* Zwou Kaarte pro Rei. Bei ongerueder Zuel geet déi lescht
+               iwwer béid Spalten, domat se net eleng lénks pecht. */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+                margin-top: 36px;
+            }
+
+            .services-grid > .service-card:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                margin-top: 34px;
+            }
+
+            .client-card {
+                padding: 28px 20px;
+            }
+
+            .client-logo-box {
+                height: 88px;
+            }
+
+            .service-card {
+                padding: 22px 13px;
+            }
+
+            .service-icon {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+
+            .service-title {
+                font-size: 1.02rem;
+                margin-bottom: 10px;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+
+            .service-description {
+                font-size: 0.86rem;
+                line-height: 1.5;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+
+            .member-image {
+                width: 130px;
+                height: 130px;
+            }
+
+            .member-name {
+                font-size: 1.45rem;
+            }
+
+            .team-member {
+                padding: 26px 20px;
+            }
+
             .section-title {
-                font-size: 2.2rem;
+                margin-bottom: 24px;
             }
-            
-            .cta-title {
-                font-size: 2.5rem;
+
+            .services-intro,
+            .process-intro,
+            .team-intro {
+                font-size: 1rem;
+            }
+
+            /* Knäppercher grouss genuch fir mat dem Fanger ze drécken */
+            .appointment-btn,
+            .ghost-btn,
+            .submit-btn {
+                padding: 15px 26px;
+                font-size: 0.98rem;
+                min-height: 48px;
+            }
+
+            .hero-cta {
+                gap: 12px;
+            }
+
+            .modal-content {
+                padding: 26px 20px;
+                width: 100%;
+                max-height: 88vh;
+            }
+
+            .form-input {
+                font-size: 16px; /* verhënnert, datt Safari beim Tippen erazoomt */
+            }
+
+            .footer-cta {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .cookie-consent {
+                left: 12px;
+                right: 12px;
+                width: auto;
+                max-width: none;
+                padding: 16px;
+            }
+
+            .cookie-content p {
+                font-size: 0.9rem;
             }
         }
+
+        /* Eréischt ganz schmuel gëtt et eng Kaart pro Rei */
+        @media (max-width: 359px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .service-card {
+                padding: 24px 20px;
+            }
+
+            .service-title {
+                font-size: 1.25rem;
+            }
+
+            .service-description {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 14px;
+                gap: 12px;
+            }
+
+            .logo-image {
+                height: 44px;
+                max-width: 96px;
+            }
+
+            .language-btn {
+                padding: 7px 8px;
+                font-size: 0.68rem;
+            }
+
+            .language-selector {
+                gap: 4px;
+            }
+
+            section {
+                padding: 70px 16px;
+            }
+
+            .hero-cta {
+                width: 100%;
+            }
+
+            .hero-cta .appointment-btn,
+            .hero-cta .ghost-btn {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .service-card {
+                padding: 26px 18px;
+            }
+
+            .process-step {
+                padding: 24px 18px;
+            }
+
+            .step-visual {
+                flex: 0 0 110px;
+                width: 110px;
+                height: 110px;
+            }
+
+            .step-icon {
+                font-size: 2.2rem;
+            }
+
+            .step-title {
+                font-size: 1.35rem;
+            }
+
+            .member-image {
+                width: 112px;
+                height: 112px;
+            }
+
+            .modal-content {
+                padding: 22px 16px;
+            }
+        }
+
+        /* Ganz schmuel Telefonen (iPhone SE a Co.) */
+        @media (max-width: 360px) {
+            header {
+                padding: 10px 10px;
+                gap: 8px;
+            }
+
+            .logo-image {
+                height: 38px;
+                max-width: 80px;
+            }
+
+            .language-selector {
+                gap: 3px;
+            }
+
+            .language-btn {
+                padding: 6px 6px;
+                font-size: 0.62rem;
+                min-height: 30px;
+            }
+
+            .menu-toggle {
+                padding: 6px;
+            }
+
+            .menu-bar {
+                width: 22px;
+            }
+
+            section {
+                padding: 60px 14px;
+            }
+        }
+
+        /* Näischt dierf de Schierm no riets erausdrécken */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* ==================================================================
+           NAVE: Intro, Cursor a Micro-Interaktiounen
+           ================================================================== */
+
+        /* ---- 1. Intro: um Ufank just d'Logo ---- */
+        .intro {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: var(--dark-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 34px;
+            transform: translateY(0);
+            transition: transform 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .intro::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 45%, rgba(249, 134, 45, 0.18), transparent 55%);
+            pointer-events: none;
+        }
+
+        .intro.lift {
+            transform: translateY(-100%);
+        }
+
+        .intro-logo {
+            width: min(240px, 52vw);
+            opacity: 0;
+            transform: scale(0.9) translateY(14px);
+            filter: blur(6px);
+            animation: introLogo 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes introLogo {
+            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        .intro-track {
+            width: min(190px, 44vw);
+            height: 2px;
+            background: rgba(255, 255, 255, 0.14);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-track i {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent), #ffb366);
+            animation: introTrack 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards;
+        }
+
+        @keyframes introTrack {
+            to { width: 100%; }
+        }
+
+        .intro.lift .intro-logo,
+        .intro.lift .intro-track {
+            opacity: 0;
+            transition: opacity 0.45s ease;
+        }
+
+        body.intro-open {
+            overflow: hidden;
+        }
+
+        /* ---- Zweete Knäppchen am Hero: direkt bei de Kontakt ---- */
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .ghost-btn {
+            display: inline-block;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--white);
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(6px);
+            text-decoration: none;
+            transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease,
+                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.4s ease;
+        }
+
+        .ghost-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249, 134, 45, 0.35);
+        }
+
+        /* ---- 3. Eegene Cursor ---- */
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 9px;
+            height: 9px;
+            margin: -4.5px 0 0 -4.5px;
+            border-radius: 50%;
+            background: var(--accent);
+            pointer-events: none;
+            z-index: 100000;
+            opacity: 0;
+            transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease,
+                        margin 0.25s ease;
+        }
+
+        body.cursor-on .cursor-dot {
+            opacity: 1;
+        }
+
+        body.cursor-on,
+        body.cursor-on a,
+        body.cursor-on button,
+        body.cursor-on input,
+        body.cursor-on textarea,
+        body.cursor-on .service-card,
+        body.cursor-on .team-member {
+            cursor: none;
+        }
+
+        body.cursor-hover .cursor-dot {
+            width: 18px;
+            height: 18px;
+            margin: -9px 0 0 -9px;
+        }
+
+        /* ---- 4. Kaarten: liicht 3D-Neigung mat Liichtreflex ---- */
+        .service-card,
+        .team-member {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .card-glare {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            background: radial-gradient(circle 200px at var(--gx, 50%) var(--gy, 50%),
+                        rgba(255, 255, 255, 0.16), transparent 70%);
+        }
+
+        .team-member .card-glare {
+            background: radial-gradient(circle 200px at var(--gx, 50%) var(--gy, 50%),
+                        rgba(249, 134, 45, 0.18), transparent 70%);
+        }
+
+        .service-card.tilting .card-glare,
+        .team-member.tilting .card-glare {
+            opacity: 1;
+        }
+
+        .team-member {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ---- 5. Prozess: grouss Schattenzifferen ---- */
+        .process-container {
+            counter-reset: step;
+        }
+
+        .process-step {
+            counter-increment: step;
+        }
+
+        /* Etappen-Nummer iwwer dem Titel, sëtzt an all zwou Layout-Varianten */
+        .step-title::before {
+            content: counter(step, decimal-leading-zero);
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* dozou eng grouss, ganz dezent Schattenziffer op der Säit vum Krees */
+        .process-step::after {
+            content: counter(step, decimal-leading-zero);
+            position: absolute;
+            bottom: -18px;
+            font-size: 7rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -4px;
+            color: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .process-step:nth-child(odd)::after {
+            left: 24px;
+        }
+
+        .process-step:nth-child(even)::after {
+            right: 24px;
+        }
+
+        .step-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---- 6. Hero-Titel: Wuert fir Wuert erop ---- */
+        .hero-title.split {
+            opacity: 1;
+            transform: none;
+        }
+
+        .hero-title .hw {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            padding-bottom: 0.12em;
+        }
+
+        .hero-title .hw i {
+            display: inline-block;
+            font-style: normal;
+            transform: translateY(115%);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: calc(var(--i) * 75ms);
+        }
+
+        .hero-title.split.animate .hw i {
+            transform: translateY(0);
+        }
+
+        /* ---- 7. Manner Beweegung, wann de Benotzer dat wëllt ---- */
+        @media (prefers-reduced-motion: reduce) {
+            .intro-logo,
+            .intro-track i {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                filter: none;
+                width: 100%;
+            }
+
+            .hero-title .hw i {
+                transform: none;
+                transition: none;
+            }
+
+            .card-glare {
+                display: none;
+            }
+        }
+
+        /* ---- 8. Touch-Geräter: keen eegene Cursor, keng Neigung ---- */
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot {
+                display: none;
+            }
+
+            .process-step::after {
+                font-size: 5rem;
+            }
+        }
+
     </style>
 </head>
 <body>
+    <!-- Intro: um Ufank gesäit een just d'Logo -->
+    <div class="intro" id="intro">
+        <img src="./Nave.png.png" alt="Nave" class="intro-logo">
+        <div class="intro-track"><i></i></div>
+    </div>
+
+    <!-- Eegene Cursor (gëtt op Touch-Geräter ausgeblent) -->
+    <div class="cursor-dot" id="cursorDot"></div>
+
     <!-- Particle Canvas -->
     <canvas id="particle-canvas"></canvas>
 
     <!-- Cookie Consent -->
     <div class="cookie-consent">
         <div class="cookie-content">
-            <p>This website uses cookies to ensure you get the best experience. We only use essential cookies to make our site work.</p>
+            <p>Dës Websäit benotzt Cookien, fir datt Dir d’bescht Erfahrung hutt. Mir benotzen nëmmen essentiell Cookien, fir datt eis Säit funktionéiert.</p>
         </div>
         <div class="cookie-buttons">
-            <button class="cookie-btn accept-btn">Accept</button>
-            <button class="cookie-btn guidelines-btn" id="showGuidelines">Cookie Guidelines</button>
+            <button class="cookie-btn accept-btn">Akzeptéieren</button>
+            <button class="cookie-btn guidelines-btn" id="showGuidelines">Cookie-Richtlinn</button>
         </div>
     </div>
 
@@ -1214,24 +1992,26 @@
         <a href="#home" class="logo">
             <img src="./Nave.png.png" alt="Logo" class="logo-image">
         </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Haaptsäit</a></li>
+            <li><a href="#services" class="nav-link">Servicer</a></li>
+            <li><a href="#process" class="nav-link">Prozess</a></li>
+            <li><a href="#team" class="nav-link">Team</a></li>
+            <li><a href="#contact" class="nav-link">Kontakt</a></li>
+        </ul>
         <div class="nav-container">
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#process" class="nav-link">Process</a></li>
-                <li><a href="#team" class="nav-link">Team</a></li>
-            </ul>
             <div class="language-selector">
-                <button class="language-btn active" data-lang="en">EN</button>
+                <button class="language-btn" data-lang="en">EN</button>
                 <button class="language-btn" data-lang="de">DE</button>
                 <button class="language-btn" data-lang="fr">FR</button>
-                <button class="language-btn" data-lang="lu">LU</button>
+                <button class="language-btn active" data-lang="lu">LU</button>
             </div>
-            <button class="appointment-btn" id="appointmentBtn">Book Appointment</button>
+            <button class="appointment-btn" id="appointmentBtn">Rendez-vous huelen</button>
         </div>
         
         <!-- Mobile menu toggle -->
-        <div class="menu-toggle" id="menuToggle">
+        <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-label="Menü" aria-expanded="false">
+            <div class="menu-bar"></div>
             <div class="menu-bar"></div>
             <div class="menu-bar"></div>
         </div>
@@ -1240,11 +2020,11 @@
     <!-- Fullscreen Menu -->
     <div class="fullscreen-menu" id="fullscreenMenu">
         <ul class="menu-items">
-            <li class="menu-item"><a href="#home" class="menu-link">Home</a></li>
-            <li class="menu-item"><a href="#services" class="menu-link">Services</a></li>
-            <li class="menu-item"><a href="#process" class="menu-link">Process</a></li>
+            <li class="menu-item"><a href="#home" class="menu-link">Haaptsäit</a></li>
+            <li class="menu-item"><a href="#services" class="menu-link">Servicer</a></li>
+            <li class="menu-item"><a href="#process" class="menu-link">Prozess</a></li>
             <li class="menu-item"><a href="#team" class="menu-link">Team</a></li>
-            <li class="menu-item"><a href="#contact" class="menu-link">Contact</a></li>
+            <li class="menu-item"><a href="#contact" class="menu-link">Kontakt</a></li>
         </ul>
     </div>
 
@@ -1256,10 +2036,11 @@
             <div class="shape shape-3"></div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">We bring the future to you</h1>
-            <p class="hero-subtitle">Transforming your vision into concrete solutions with cutting-edge AI technology</p>
+            <h1 class="hero-title">Mir bréngen d’Zukunft bei Iech</h1>
+            <p class="hero-tagline">Är Visioun ass eis Passioun</p>
             <div class="hero-cta">
-                <button class="appointment-btn" id="heroAppointmentBtn">Get Started</button>
+                <button class="appointment-btn" id="heroAppointmentBtn">Schreiwt eis</button>
+                <a href="#contact" class="ghost-btn" id="heroContactBtn">Kontakt</a>
             </div>
         </div>
         <div class="transition-circle"></div>
@@ -1267,59 +2048,59 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="section-title">Our AI Solutions</h2>
-        <p class="services-intro">We specialize in developing custom AI solutions that drive innovation and efficiency for your business.</p>
+        <h2 class="section-title">Eis Servicer</h2>
+        <p class="services-intro">Mir entwéckelen digital Léisunge fir Betriber. Vun der éischter Iddi bis zur fäerdeger Säit kritt Dir alles aus enger Hand.</p>
         
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-phone-alt"></i>
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-                <h3 class="service-title">AI Assistants</h3>
-                <p class="service-description">Intelligent phone and WhatsApp assistants for appointments and customer support tailored to your needs.</p>
+                <h3 class="service-title">Websäiten</h3>
+                <p class="service-description">Firmesäiten an Online-Shops, déi séier lueden a sauber lafen. Performant gebaut a passend zu Ärem Betrib.</p>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-database"></i>
+                    <i class="fas fa-mobile-screen-button"></i>
                 </div>
-                <h3 class="service-title">RAG Agents</h3>
-                <p class="service-description">Advanced data finding and classification systems to organize and leverage your company's information.</p>
+                <h3 class="service-title">Applikatiounen</h3>
+                <p class="service-description">Applikatiounen fir Handy an Tablet, déi Är Aarbechtsofleef vereinfachen an Är Prozesser digitaliséieren.</p>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-lightbulb"></i>
+                    <i class="fas fa-robot"></i>
                 </div>
-                <h3 class="service-title">Content Creators</h3>
-                <p class="service-description">AI-powered content generation and idea discovery tools to boost your marketing and innovation.</p>
+                <h3 class="service-title">KI-Agenten</h3>
+                <p class="service-description">KI-Agenten, Automatisatioun an intelligent Léisungen. Mir setzen se just do an, wou se Ärem Betrib e kloren Notzen bréngen.</p>
             </div>
         </div>
     </section>
 
     <!-- Process Section - Redesigned -->
     <section class="process" id="process">
-        <h2 class="section-title">Our Process</h2>
-        <p class="process-intro">We follow a structured approach to ensure your AI solutions are delivered efficiently and effectively.</p>
+        <h2 class="section-title">Eise Prozess</h2>
+        <p class="process-intro">Fënnef Schrëtt, e feste Präis a kloer Ofsproochen.</p>
         
         <div class="process-container">
             <div class="process-step">
                 <div class="step-visual">
-                    <i class="fas fa-search step-icon"></i>
+                    <i class="fas fa-comments step-icon"></i>
                 </div>
                 <div class="step-content">
-                    <h3 class="step-title">Discovery & Analysis</h3>
-                    <p class="step-description">We begin by deeply understanding your business needs, challenges, and objectives. Through workshops and analysis, we identify opportunities where AI can deliver the most value.</p>
+                    <h3 class="step-title">Éischt Gespréich</h3>
+                    <p class="step-description">Mir lauschteren Iech no a verstinn Äre Projet. Schonn an dësem éischte Gespréich bréngen mir eegen Iddien a méiglech Léisungsweeër mat.</p>
                 </div>
             </div>
             
             <div class="process-step">
                 <div class="step-visual">
-                    <i class="fas fa-pencil-alt step-icon"></i>
+                    <i class="fas fa-pen-ruler step-icon"></i>
                 </div>
                 <div class="step-content">
-                    <h3 class="step-title">Solution Design</h3>
-                    <p class="step-description">Our experts create a tailored AI architecture specifically for your requirements. We design intuitive interfaces and plan seamless integration with your existing systems.</p>
+                    <h3 class="step-title">Konzept a Design</h3>
+                    <p class="step-description">Mir entwéckelen zesummen d'Richtung, d'Design an de Prototyp.</p>
                 </div>
             </div>
             
@@ -1328,48 +2109,71 @@
                     <i class="fas fa-code step-icon"></i>
                 </div>
                 <div class="step-content">
-                    <h3 class="step-title">Development & Testing</h3>
-                    <p class="step-description">Our team builds robust AI models using cutting-edge technologies. We conduct rigorous testing to ensure performance, accuracy, and reliability before deployment.</p>
+                    <h3 class="step-title">Entwécklung</h3>
+                    <p class="step-description">Duerno gëtt déi eigentlech Léisung entwéckelt. Mir halen Iech um Lafenden, wéi wäit mir sinn.</p>
                 </div>
             </div>
             
             <div class="process-step">
                 <div class="step-visual">
-                    <i class="fas fa-rocket step-icon"></i>
+                    <i class="fas fa-clipboard-check step-icon"></i>
                 </div>
                 <div class="step-content">
-                    <h3 class="step-title">Deployment & Support</h3>
-                    <p class="step-description">We implement the solution with minimal disruption and provide comprehensive training. Our ongoing support ensures your AI system continues to deliver value.</p>
+                    <h3 class="step-title">Tester a Lancement</h3>
+                    <p class="step-description">Mir testen alles op Handy, Tablet a Computer. Wann alles passt, gëtt d'Léisung online gestallt.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-visual">
+                    <i class="fas fa-arrow-trend-up step-icon"></i>
+                </div>
+                <div class="step-content">
+                    <h3 class="step-title">Weiderentwécklung</h3>
+                    <p class="step-description">Och nodeem alles online ass, bleiwe mir do. Mir entwéckelen d'Léisung weider a verbesseren se.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <h2 class="section-title">Eis Clienten</h2>
+        <p class="clients-intro">Projeten, déi mir schonn ëmgesat hunn.</p>
+        
+        <div class="clients-grid">
+            <!-- Fir e Client uklickbar ze maachen: einfach en href derbäisetzen.
+                 Ouni href bleift d'Kaart do, mee se ass net uklickbar. -->
+            <div class="client-card">
+                <div class="client-logo-box">
+                    <img src="./client-sauerbeen.png" alt="SauerBeen App" class="client-logo">
+                </div>
+                <h3 class="client-name">SauerBeen App</h3>
+            </div>
+            
+            <a class="client-card" href="https://www.blackstar-mersch.lu/" target="_blank" rel="noopener noreferrer">
+                <div class="client-logo-box">
+                    <img src="./client-blackstar.png" alt="Blackstar Mersch" class="client-logo">
+                </div>
+                <h3 class="client-name">Blackstar Mersch</h3>
+            </a>
+        </div>
+    </section>
+
     <!-- Team Section -->
     <section class="team" id="team">
-        <h2 class="section-title">Our Team</h2>
-        <p class="team-intro">Meet the passionate minds behind our AI solutions</p>
+        <h2 class="section-title">Eist Team</h2>
+        <p class="team-intro">D'Leit hannert Nave</p>
         
         <div class="team-grid">
             <div class="team-member">
                 <img src="./Jamie.JPG" alt="Jamie Ley" class="member-image">
                 <h3 class="member-name">Jamie Ley</h3>
-                <p class="member-role">CEO & Co-Founder</p>
-                <p class="member-bio">Jamie is passionate about pushing the boundaries of AI and its practical applications in business. With over 10 years of experience in machine learning, he leads our vision to bring AI solutions to companies of all sizes.</p>
             </div>
             
             <div class="team-member">
                 <img src="./Steen.JPG" alt="Steen Beckers" class="member-image">
                 <h3 class="member-name">Steen Beckers</h3>
-                <p class="member-role">CTO</p>
-                <p class="member-bio">Steen leads our technical team with expertise in machine learning and AI system architecture. He is dedicated to creating robust, scalable AI solutions that solve real business challenges.</p>
-            </div>
-
-            <div class="team-member">
-                <img src="./Senay.jpg" alt="Steen Beckers" class="member-image">
-                <h3 class="member-name">Senay Ocakdan</h3>
-                <p class="member-role">Lead AI Engineer</p>
-                <p class="member-bio">Senay specializes in developing cutting-edge AI algorithms and models. With a background in data science and software engineering, he ensures our solutions are both innovative and reliable.</p>
             </div>
         </div>
     </section>
@@ -1405,7 +2209,7 @@
             <div class="footer-column">
                 <h3>Contact</h3>
                 <ul class="footer-links">
-                    <li class="footer-link">naveai.contact@gmail.com</li>
+                    <li class="footer-link">nave.advisory@gmail.com</li>
                     <li class="footer-link">+352 621 456 821</li>
                     <li class="footer-link">Diekirch, Luxembourg</li>
                 </ul>
@@ -1421,47 +2225,45 @@
     <div class="modal" id="appointmentModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Schedule an Appointment</h2>
+                <h2 class="modal-title" id="appointmentTitle">Rendez-vous huelen</h2>
                 <button class="close-modal">&times;</button>
             </div>
-            <form id="appointmentForm" action="https://formsubmit.co/naveai.contact@gmail.com" method="POST">
+            <form id="appointmentForm" novalidate>
                 <div class="form-group">
-                    <label class="form-label" for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-input" required>
+                    <label class="form-label" for="firstName" id="labelFirstName">Virnumm</label>
+                    <input type="text" id="firstName" name="firstName" class="form-input" autocomplete="given-name" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-input" required>
+                    <label class="form-label" for="lastName" id="labelLastName">Numm</label>
+                    <input type="text" id="lastName" name="lastName" class="form-input" autocomplete="family-name" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-input" required>
+                    <label class="form-label" for="email" id="labelEmail">E-Mail</label>
+                    <input type="email" id="email" name="email" class="form-input" autocomplete="email" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="company">Company</label>
-                    <input type="text" id="company" name="company" class="form-input" required>
+                    <label class="form-label" for="company" id="labelCompany">Firma</label>
+                    <input type="text" id="company" name="company" class="form-input" autocomplete="organization">
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                    <label class="form-label" for="phone" id="labelPhone">Telefonsnummer</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" autocomplete="tel" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
+                    <label class="form-label" for="message" id="labelMessage">Message</label>
                     <textarea id="message" name="message" class="form-input" rows="4" required></textarea>
                 </div>
                 
-                <!-- FormSubmit Konfiguration -->
-                <input type="hidden" name="_subject" value="New Appointment Request">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://nave.lu/thank-you.html">
+                <!-- Spam-Fal: gëtt vu Mënschen ni ausgefëllt -->
+                <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
                 
-                <button type="submit" class="submit-btn">Send Request</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Ufro schécken</button>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
             </form>
         </div>
     </div>
@@ -1480,7 +2282,7 @@
     <!-- Language Modal -->
     <div class="modal language-modal" id="languageModal">
         <div class="language-modal-content">
-            <h2 class="modal-title">Select Language</h2>
+            <h2 class="modal-title" id="languageModalTitle">Sprooch auswielen</h2>
             <div class="language-options">
                 <button class="language-option" data-lang="en">English</button>
                 <button class="language-option" data-lang="de">Deutsch</button>
@@ -1492,6 +2294,18 @@
     </div>
 
     <script>
+        /* ------------------------------------------------------------------
+           KONFIGURATIOUN
+           CONTACT_EMAIL = d'Adress, op déi d'Rendez-vous-Ufroe geschéckt ginn.
+           Wann d'Adress geännert gëtt, muss de Formulaire eemol geschéckt ginn.
+           FormSubmit schéckt dann eng Aktivéierungsmail op déi nei Adress.
+           Dee Link muss ugeklickt ginn, soss kommen d'Ufroen net un.
+           ------------------------------------------------------------------ */
+        const CONTACT_EMAIL = 'nave.advisory@gmail.com';
+
+        // Standardsprooch, wann een d'Säit fir d'éischt opmécht
+        const DEFAULT_LANG = 'lu';
+
         // DOM Elements
         const menuToggle = document.getElementById('menuToggle');
         const fullscreenMenu = document.getElementById('fullscreenMenu');
@@ -1509,6 +2323,8 @@
         const policyLinks = document.querySelectorAll('.policy-link');
         const closeModalButtons = document.querySelectorAll('.close-modal');
         const appointmentForm = document.getElementById('appointmentForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
         const navLinks = document.querySelectorAll('.nav-link');
         const footerNavLinks = document.querySelectorAll('.footer-link a');
         const serviceCards = document.querySelectorAll('.service-card');
@@ -1520,132 +2336,114 @@
         const particleCanvas = document.getElementById('particle-canvas');
         
         // Elements to animate
-        const animatedElements = [
-            document.querySelector('.logo'),
-            ...document.querySelectorAll('.nav-link'),
-            document.querySelector('.appointment-btn'),
-            document.querySelector('.hero-title'),
-            document.querySelector('.hero-subtitle'),
-            document.querySelector('.hero-cta'),
-            ...document.querySelectorAll('.section-title'),
-            document.querySelector('.services-intro'),
-            ...document.querySelectorAll('.service-card'),
-            document.querySelector('.process-intro'),
-            ...document.querySelectorAll('.process-step'),
-            document.querySelector('.team-intro'),
-            ...document.querySelectorAll('.team-member'),
-            document.querySelector('.cta-title'),
-            ...document.querySelectorAll('.footer-column')
-        ];
-
         // Policy Contents
         const policies = {
             cookies: {
                 title: "Cookie Policy",
-                content: `<p><strong>Effective Date: October 21, 2025</strong></p>
+                content: `
+                <p><strong>Effective Date: October 21, 2025</strong></p>
                 <h3>1. Introduction</h3>
-                <p>1. Acceptance of Terms
-By accessing or using the website nave.lu ("Site"), operated by Nave ("we," "our," or "us"), you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, please do not use this Site.
-2. Changes to Terms
-Revenz reserves the right to modify, update, or revise these Terms of Use at any time without prior notice. All changes will be posted on this page, and the "Effective Date" will be updated accordingly. It is your responsibility to review these Terms periodically.
-3. Use of the Site
-You agree to use the Site only for lawful purposes and in accordance with these Terms. You may not use the Site:
-In any way that violates any applicable local, national, or international law or regulation.
-To transmit any content that is harmful, threatening, abusive, defamatory, or otherwise objectionable.
-To interfere with or disrupt the functioning of the Site, servers, or networks.
-4. User Account
-To access certain features of the Site, you may be required to create an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately if you suspect any unauthorized use of your account.
-5. Intellectual Property
-All content on the Site, including but not limited to text, graphics, logos, images, and software, is the property of Revenz and is protected by copyright and other intellectual property laws. You may not use any content from the Site without prior written permission from Revenz.
-6. Limitation of Liability
-To the fullest extent permitted by applicable law, Nave is not liable for any direct, indirect, incidental, special, or consequential damages arising from the use of or inability to use the Site, including any loss of data or profits.
-7. Privacy
-Your use of the Site is also governed by our Privacy Policy, which outlines how we collect, use, and protect your personal information.
-8. Third-Party Links
-The Site may contain links to third-party websites. Revenz is not responsible for the content, privacy practices, or any other aspect of such websites. We encourage you to review the terms and privacy policies of any third-party sites you visit.
-9. Termination
-Revenz reserves the right to suspend or terminate your access to the Site at any time, without notice, for conduct that violates these Terms of Use or is harmful to other users, the Site, or our operations.
-10. Governing Law
-These Terms of Use are governed by and construed in accordance with the laws of Luxembourg. Any disputes arising from or related to the Site will be subject to the exclusive jurisdiction of the courts of Luxembourg.
-11. Contact Information
-If you have any questions about these Terms of Use, please contact us at:
-Revenz
-Email: naveai.contact@gmail.com
-Website: nave.lu</p>`
+                <p>This Cookies Policy explains how Nave ("we," "our," or "us") uses cookies and similar technologies to recognize you when you visit our website nave.lu ("Site"). It explains what these technologies are, why we use them, and your rights to control our use of them.</p>
+                <h3>2. What Are Cookies?</h3>
+                <p>Cookies are small data files that are placed on your device when you visit a website. Cookies allow the website to recognize your device and remember certain information about your visit, such as your preferences or login status.</p>
+                <h3>3. How We Use Cookies</h3>
+                <p>We use cookies for several reasons, including:</p>
+                <p>Essential Cookies: These cookies are necessary for the website to function properly and enable basic features like navigation.</p>
+                <p>Performance Cookies: These cookies collect information about how visitors use our Site to help us improve its performance.</p>
+                <p>Functional Cookies: These cookies allow us to remember choices you make (like your language preference) to enhance your experience.</p>
+                <p>Advertising and Tracking Cookies: We may use cookies to track your activities on our Site for targeted advertising purposes.</p>
+                <h3>4. Third-Party Cookies</h3>
+                <p>We may allow third-party service providers, such as advertising partners or analytics providers, to place cookies on your device. These third parties may use their cookies to collect information about your visits to our Site and other websites.</p>
+                <h3>5. Managing Cookies</h3>
+                <p>You have the right to accept or reject cookies. Most web browsers are set to accept cookies by default. However, you can change your browser settings to block or delete cookies if you prefer.</p>
+                <p>Please note that blocking or deleting cookies may impact your experience on the Site, and some features may not work as intended.</p>
+                <h3>6. Changes to This Cookies Policy</h3>
+                <p>We may update this Cookies Policy from time to time. When we do, we will post the updated policy on this page, and the "Effective Date" will be revised accordingly. Please review this policy periodically to stay informed about our use of cookies.</p>
+                <h3>7. Contact Us</h3>
+                <p>If you have any questions about this Cookies Policy or how we use cookies, please contact us at:</p>
+                <p>Nave</p>
+                <p>Email: nave.advisory@gmail.com</p>
+                <p>Website: nave.lu</p>`
             },
             terms: {
                 title: "Terms of Use",
-                content: `<p><strong>Effective Date: October 21, 2025</strong></p>
+                content: `
+                <p><strong>Effective Date: October 21, 2025</strong></p>
                 <h3>1. Acceptance of Terms</h3>
-                <p>1. Introduction
-This Privacy Policy explains how Nave ("we," "our," or "us") collects, uses, and protects your personal information when you visit our website revenz.lu ("Site"). By using our Site, you consent to the practices described in this policy.
-2. Information We Collect
-We collect personal information that you provide to us directly when you use the Site. This may include:
-Contact Information: Name, email address, and other communication details.
-Account Information: If you create an account, we may collect your username, password, and other account-related information.
-Usage Information: Information about how you use the Site, such as browsing activity, IP address, and device information.
-3. How We Use Your Information
-We use the information we collect for the following purposes:
-To provide and improve our services, including personalized experiences.
-To communicate with you, respond to your inquiries, and provide customer support.
-To send you promotional materials, updates, and other communications related to our services (with your consent, if required).
-To monitor and analyze usage trends to improve our Site's functionality.
-4. How We Protect Your Information
-We take reasonable measures to protect your personal information from unauthorized access, disclosure, or alteration. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.
-5. Sharing Your Information
-We do not sell, rent, or trade your personal information to third parties. We may share your information in the following situations:
-Service Providers: We may share your information with third-party vendors or service providers who assist us in operating the Site and delivering services to you.
-Legal Requirements: We may disclose your information if required by law, such as to comply with a subpoena, legal process, or government request.
-Business Transfers: If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.
-6. Your Rights
-Depending on your location, you may have certain rights regarding your personal information, including:
-The right to access and review the information we hold about you.
-The right to correct any inaccuracies in your information.
-The right to request the deletion of your information (subject to certain exceptions).
-The right to withdraw consent to any processing of your personal information, where applicable.
-If you would like to exercise any of these rights, please contact us using the information provided below.
-7. Cookies
-We use cookies and similar technologies to enhance your experience on the Site. For more details, please refer to our Cookies Policy.
-8. Third-Party Links
-The Site may contain links to third-party websites. We are not responsible for the privacy practices or the content of those websites. We encourage you to review the privacy policies of any third-party sites you visit.
-9. Changes to This Privacy Policy
-We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the "Effective Date" will be revised accordingly. We recommend that you review this policy periodically to stay informed about how we are protecting your personal information.
-10. Contact Us
-If you have any questions or concerns about this Privacy Policy, please contact us at:
-Revenz
-Email: naveai.contact@gmail.com
-Website: nave.lu</p>`
+                <p>By accessing or using the website nave.lu ("Site"), operated by Nave ("we," "our," or "us"), you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, please do not use this Site.</p>
+                <h3>2. Changes to Terms</h3>
+                <p>Nave reserves the right to modify, update, or revise these Terms of Use at any time without prior notice. All changes will be posted on this page, and the "Effective Date" will be updated accordingly. It is your responsibility to review these Terms periodically.</p>
+                <h3>3. Use of the Site</h3>
+                <p>You agree to use the Site only for lawful purposes and in accordance with these Terms. You may not use the Site:</p>
+                <p>In any way that violates any applicable local, national, or international law or regulation.</p>
+                <p>To transmit any content that is harmful, threatening, abusive, defamatory, or otherwise objectionable.</p>
+                <p>To interfere with or disrupt the functioning of the Site, servers, or networks.</p>
+                <h3>4. User Account</h3>
+                <p>To access certain features of the Site, you may be required to create an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately if you suspect any unauthorized use of your account.</p>
+                <h3>5. Intellectual Property</h3>
+                <p>All content on the Site, including but not limited to text, graphics, logos, images, and software, is the property of Nave and is protected by copyright and other intellectual property laws. You may not use any content from the Site without prior written permission from Nave.</p>
+                <h3>6. Limitation of Liability</h3>
+                <p>To the fullest extent permitted by applicable law, Nave is not liable for any direct, indirect, incidental, special, or consequential damages arising from the use of or inability to use the Site, including any loss of data or profits.</p>
+                <h3>7. Privacy</h3>
+                <p>Your use of the Site is also governed by our Privacy Policy, which outlines how we collect, use, and protect your personal information.</p>
+                <h3>8. Third-Party Links</h3>
+                <p>The Site may contain links to third-party websites. Nave is not responsible for the content, privacy practices, or any other aspect of such websites. We encourage you to review the terms and privacy policies of any third-party sites you visit.</p>
+                <h3>9. Termination</h3>
+                <p>Nave reserves the right to suspend or terminate your access to the Site at any time, without notice, for conduct that violates these Terms of Use or is harmful to other users, the Site, or our operations.</p>
+                <h3>10. Governing Law</h3>
+                <p>These Terms of Use are governed by and construed in accordance with the laws of Luxembourg. Any disputes arising from or related to the Site will be subject to the exclusive jurisdiction of the courts of Luxembourg.</p>
+                <h3>11. Contact Information</h3>
+                <p>If you have any questions about these Terms of Use, please contact us at:</p>
+                <p>Nave</p>
+                <p>Email: nave.advisory@gmail.com</p>
+                <p>Website: nave.lu</p>`
             },
             privacy: {
                 title: "Privacy Policy",
-                content: `<p><strong>Effective Date: October 21, 2025</strong></p>
+                content: `
+                <p><strong>Effective Date: October 21, 2025</strong></p>
                 <h3>1. Introduction</h3>
-                <p>1. Introduction
-This Cookies Policy explains how Nave ("we," "our," or "us") uses cookies and similar technologies to recognize you when you visit our website revenz.lu ("Site"). It explains what these technologies are, why we use them, and your rights to control our use of them.
-2. What Are Cookies?
-Cookies are small data files that are placed on your device when you visit a website. Cookies allow the website to recognize your device and remember certain information about your visit, such as your preferences or login status.
-3. How We Use Cookies
-We use cookies for several reasons, including:
-Essential Cookies: These cookies are necessary for the website to function properly and enable basic features like navigation.
-Performance Cookies: These cookies collect information about how visitors use our Site to help us improve its performance.
-Functional Cookies: These cookies allow us to remember choices you make (like your language preference) to enhance your experience.
-Advertising and Tracking Cookies: We may use cookies to track your activities on our Site for targeted advertising purposes.
-4. Third-Party Cookies
-We may allow third-party service providers, such as advertising partners or analytics providers, to place cookies on your device. These third parties may use their cookies to collect information about your visits to our Site and other websites.
-5. Managing Cookies
-You have the right to accept or reject cookies. Most web browsers are set to accept cookies by default. However, you can change your browser settings to block or delete cookies if you prefer.
-Please note that blocking or deleting cookies may impact your experience on the Site, and some features may not work as intended.
-6. Changes to This Cookies Policy
-We may update this Cookies Policy from time to time. When we do, we will post the updated policy on this page, and the "Effective Date" will be revised accordingly. Please review this policy periodically to stay informed about our use of cookies.
-7. Contact Us
-If you have any questions about this Cookies Policy or how we use cookies, please contact us at:
-Revenz
-Email: naveai.contact@gmail.com
-Website: nave.lu</p>`
+                <p>This Privacy Policy explains how Nave ("we," "our," or "us") collects, uses, and protects your personal information when you visit our website nave.lu ("Site"). By using our Site, you consent to the practices described in this policy.</p>
+                <h3>2. Information We Collect</h3>
+                <p>We collect personal information that you provide to us directly when you use the Site. This may include:</p>
+                <p>Contact Information: Name, email address, and other communication details.</p>
+                <p>Account Information: If you create an account, we may collect your username, password, and other account-related information.</p>
+                <p>Usage Information: Information about how you use the Site, such as browsing activity, IP address, and device information.</p>
+                <h3>3. How We Use Your Information</h3>
+                <p>We use the information we collect for the following purposes:</p>
+                <p>To provide and improve our services, including personalized experiences.</p>
+                <p>To communicate with you, respond to your inquiries, and provide customer support.</p>
+                <p>To send you promotional materials, updates, and other communications related to our services (with your consent, if required).</p>
+                <p>To monitor and analyze usage trends to improve our Site's functionality.</p>
+                <h3>4. How We Protect Your Information</h3>
+                <p>We take reasonable measures to protect your personal information from unauthorized access, disclosure, or alteration. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+                <h3>5. Sharing Your Information</h3>
+                <p>We do not sell, rent, or trade your personal information to third parties. We may share your information in the following situations:</p>
+                <p>Service Providers: We may share your information with third-party vendors or service providers who assist us in operating the Site and delivering services to you.</p>
+                <p>Legal Requirements: We may disclose your information if required by law, such as to comply with a subpoena, legal process, or government request.</p>
+                <p>Business Transfers: If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</p>
+                <h3>6. Your Rights</h3>
+                <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                <p>The right to access and review the information we hold about you.</p>
+                <p>The right to correct any inaccuracies in your information.</p>
+                <p>The right to request the deletion of your information (subject to certain exceptions).</p>
+                <p>The right to withdraw consent to any processing of your personal information, where applicable.</p>
+                <p>If you would like to exercise any of these rights, please contact us using the information provided below.</p>
+                <h3>7. Cookies</h3>
+                <p>We use cookies and similar technologies to enhance your experience on the Site. For more details, please refer to our Cookies Policy.</p>
+                <h3>8. Third-Party Links</h3>
+                <p>The Site may contain links to third-party websites. We are not responsible for the privacy practices or the content of those websites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+                <h3>9. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the "Effective Date" will be revised accordingly. We recommend that you review this policy periodically to stay informed about how we are protecting your personal information.</p>
+                <h3>10. Contact Us</h3>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+                <p>Nave</p>
+                <p>Email: nave.advisory@gmail.com</p>
+                <p>Website: nave.lu</p>`
             }
         };
 
-        // Language content - ERWEITERT mit Service-Grids, Process-Steps, Team-Mitgliedern und Footer
+        // Language content
         const languageContent = {
             en: {
                 home: "Home",
@@ -1654,226 +2452,258 @@ Website: nave.lu</p>`
                 team: "Team",
                 contact: "Contact",
                 bookAppointment: "Book Appointment",
-                getStarted: "Get Started",
-                freeConsultation: "Schedule a Free Consultation",
+                getStarted: "Write to us",
+                freeConsultation: "Request a free consultation",
                 heroTitle: "We bring the future to you",
-                heroSubtitle: "Transforming your vision into concrete solutions with cutting-edge AI technology",
-                servicesTitle: "Our AI Solutions",
-                servicesDesc: "We specialize in developing custom AI solutions that drive innovation and efficiency for your business.",
+                heroTagline: "Your vision is our passion",
+                servicesTitle: "Our Services",
+                servicesDesc: "We build digital solutions for businesses. From the first idea to the finished site, you get everything from one team.",
                 processTitle: "Our Process",
-                processDesc: "We follow a structured approach to ensure your AI solutions are delivered efficiently and effectively.",
+                processDesc: "Five steps, a fixed price and clear agreements.",
+                clientsTitle: "Our Clients",
+                clientsDesc: "Projects we have already delivered.",
                 teamTitle: "Our Team",
-                teamDesc: "Meet the passionate minds behind our AI solutions",
-                footerTitle: "Let's Build Tomorrow Together",
-                copyright: "© 2025 Nave. All rights reserved.",
-                
-                // Service Grids
-                service1Title: "AI Assistants",
-                service1Desc: "Intelligent phone and WhatsApp assistants for appointments and customer support tailored to your needs.",
-                service2Title: "RAG Agents",
-                service2Desc: "Advanced data finding and classification systems to organize and leverage your company's information.",
-                service3Title: "Content Creators",
-                service3Desc: "AI-powered content generation and idea discovery tools to boost your marketing and innovation.",
-                
-                // Process Steps
-                process1Title: "Discovery & Analysis",
-                process1Desc: "We begin by deeply understanding your business needs, challenges, and objectives. Through workshops and analysis, we identify opportunities where AI can deliver the most value.",
-                process2Title: "Solution Design",
-                process2Desc: "Our experts create a tailored AI architecture specifically for your requirements. We design intuitive interfaces and plan seamless integration with your existing systems.",
-                process3Title: "Development & Testing",
-                process3Desc: "Our team builds robust AI models using cutting-edge technologies. We conduct rigorous testing to ensure performance, accuracy, and reliability before deployment.",
-                process4Title: "Deployment & Support",
-                process4Desc: "We implement the solution with minimal disruption and provide comprehensive training. Our ongoing support ensures your AI system continues to deliver value.",
-                
-                // Team Members
+                teamDesc: "The people behind Nave",
+                footerTitle: "Let\u2019s get started together",
+                copyright: "\u00a9 2025 Nave. All rights reserved.",
+
+                service1Title: "Websites",
+                service1Desc: "Company sites and online shops that load fast and run smoothly. Built for performance and made to fit your business.",
+                service2Title: "Applications",
+                service2Desc: "Applications for phone and tablet that simplify your workflows and take your processes digital.",
+                service3Title: "AI Agents",
+                service3Desc: "AI agents, automation and intelligent solutions. We only use them where they give your business a clear benefit.",
+
+                process1Title: "First conversation",
+                process1Desc: "We listen and get to know your project. We bring our own ideas and possible directions to that first conversation.",
+                process2Title: "Concept and design",
+                process2Desc: "Together we work out the direction, the design and the prototype.",
+                process3Title: "Development",
+                process3Desc: "Then we build the actual solution. We keep you posted on how far along we are.",
+                process4Title: "Testing and launch",
+                process4Desc: "We test everything on phone, tablet and desktop. Once it all fits, the solution goes live.",
+                process5Title: "Ongoing work",
+                process5Desc: "We stay available after launch. We keep developing and improving the solution.",
+
                 teamMember1Name: "Jamie Ley",
-                teamMember1Role: "CEO & Co-Founder",
-                teamMember1Bio: "Jamie is passionate about pushing the boundaries of AI and its practical applications in business. With over 10 years of experience in machine learning, he leads our vision to bring AI solutions to companies of all sizes.",
                 teamMember2Name: "Steen Beckers",
-                teamMember2Role: "CTO",
-                teamMember2Bio: "Steen leads our technical team with expertise in machine learning and AI system architecture. He is dedicated to creating robust, scalable AI solutions that solve real business challenges.",
-                teamMember3Name: "Senay Ocakdan",
-                teamMember3Role: "Lead AI Engineer",
-                teamMember3Bio: "Senay specializes in developing cutting-edge AI algorithms and models. With a background in data science and software engineering, he ensures our solutions are both innovative and reliable.",
-                
-                // Footer Navigation
+
                 footerNav: "Navigation",
                 footerLegal: "Legal",
                 footerContact: "Contact",
                 cookiePolicy: "Cookie Policy",
                 termsOfUse: "Terms of Use",
-                privacyPolicy: "Privacy Policy"
+                privacyPolicy: "Privacy Policy",
+
+                cookieText: "This website uses cookies so that everything works properly. We only use the ones we need.",
+                cookieAccept: "Accept",
+                selectLanguage: "Choose language",
+
+                formFirstName: "First name",
+                formLastName: "Last name",
+                formEmail: "Email",
+                formCompany: "Company (optional)",
+                formPhone: "Phone number",
+                formMessage: "Message",
+                formSubmit: "Send request",
+                formSending: "Sending...",
+                formSuccess: "Thank you. We have received your request and will get back to you within 24 hours.",
+                formError: "Your request could not be sent. Please try again or write to us at {email}."
             },
             de: {
                 home: "Startseite",
-                services: "Dienstleistungen",
+                services: "Leistungen",
                 process: "Prozess",
                 team: "Team",
                 contact: "Kontakt",
                 bookAppointment: "Termin buchen",
-                getStarted: "Loslegen",
-                freeConsultation: "Kostenlose Beratung vereinbaren",
+                getStarted: "Schreiben Sie uns",
+                freeConsultation: "Kostenloses Gespr\u00e4ch anfragen",
                 heroTitle: "Wir bringen die Zukunft zu Ihnen",
-                heroSubtitle: "Wir verwandeln Ihre Vision in konkrete Lösungen mit modernster KI-Technologie",
-                servicesTitle: "Unsere KI-Lösungen",
-                servicesDesc: "Wir sind spezialisiert auf die Entwicklung maßgeschneiderter KI-Lösungen, die Innovation und Effizienz in Ihrem Unternehmen fördern.",
+                heroTagline: "Ihre Vision ist unsere Leidenschaft",
+                servicesTitle: "Unsere Leistungen",
+                servicesDesc: "Wir entwickeln digitale L\u00f6sungen f\u00fcr Unternehmen. Von der ersten Idee bis zur fertigen Seite bekommen Sie alles aus einer Hand.",
                 processTitle: "Unser Prozess",
-                processDesc: "Wir folgen einem strukturierten Ansatz, um sicherzustellen, dass Ihre KI-Lösungen effizient und effektiv geliefert werden.",
+                processDesc: "F\u00fcnf Schritte, ein Festpreis und klare Absprachen.",
+                clientsTitle: "Unsere Kunden",
+                clientsDesc: "Projekte, die wir bereits umgesetzt haben.",
                 teamTitle: "Unser Team",
-                teamDesc: "Lernen Sie die leidenschaftlichen Köpfe hinter unseren KI-Lösungen kennen",
-                footerTitle: "Lassen Sie uns gemeinsam die Zukunft gestalten",
-                copyright: "© 2025 Nave. Alle Rechte vorbehalten.",
-                
-                // Service Grids
-                service1Title: "KI-Assistenten",
-                service1Desc: "Intelligente Telefon- und WhatsApp-Assistenten für Terminvereinbarungen und Kundensupport, die auf Ihre Bedürfnisse zugeschnitten sind.",
-                service2Title: "RAG-Agenten",
-                service2Desc: "Fortschrittliche Systeme zur Datensuche und -klassifizierung, um die Informationen Ihres Unternehmens zu organisieren und zu nutzen.",
-                service3Title: "Content-Ersteller",
-                service3Desc: "KI-gestützte Tools zur Inhaltsgenerierung und Ideenfindung, um Ihr Marketing und Ihre Innovation zu fördern.",
-                
-                // Process Steps
-                process1Title: "Entdeckung & Analyse",
-                process1Desc: "Wir beginnen mit einem tiefgreifenden Verständnis Ihrer Geschäftsanforderungen, Herausforderungen und Ziele. Durch Workshops und Analysen identifizieren wir Möglichkeiten, bei denen KI den größten Mehrwert bieten kann.",
-                process2Title: "Lösungsdesign",
-                process2Desc: "Unsere Experten erstellen eine maßgeschneiderte KI-Architektur speziell für Ihre Anforderungen. Wir entwerfen intuitive Schnittstellen und planen die nahtlose Integration in Ihre bestehenden Systeme.",
-                process3Title: "Entwicklung & Testing",
-                process3Desc: "Unser Team entwickelt robuste KI-Modelle mit modernsten Technologien. Wir führen rigorose Tests durch, um Leistung, Genauigkeit und Zuverlässigkeit vor der Bereitstellung sicherzustellen.",
-                process4Title: "Bereitstellung & Support",
-                process4Desc: "Wir implementieren die Lösung mit minimalen Unterbrechungen und bieten umfassende Schulungen an. Unser kontinuierlicher Support stellt sicher, dass Ihr KI-System weiterhin Mehrwert liefert.",
-                
-                // Team Members
+                teamDesc: "Die Menschen hinter Nave",
+                footerTitle: "Lassen Sie uns zusammen anfangen",
+                copyright: "\u00a9 2025 Nave. Alle Rechte vorbehalten.",
+
+                service1Title: "Websites",
+                service1Desc: "Firmenseiten und Online-Shops, die schnell laden und sauber laufen. Performant gebaut und passend zu Ihrem Unternehmen.",
+                service2Title: "Applikationen",
+                service2Desc: "Applikationen f\u00fcr Handy und Tablet, die Ihre Abl\u00e4ufe vereinfachen und Ihre Prozesse digitalisieren.",
+                service3Title: "KI-Agents",
+                service3Desc: "KI-Agents, Automatisierung und intelligente L\u00f6sungen. Wir setzen sie nur dort ein, wo sie Ihrem Unternehmen einen klaren Nutzen bringen.",
+
+                process1Title: "Erstes Gespr\u00e4ch",
+                process1Desc: "Wir h\u00f6ren zu und verstehen Ihr Projekt. Schon in diesem ersten Gespr\u00e4ch bringen wir eigene Ideen und m\u00f6gliche L\u00f6sungsans\u00e4tze mit.",
+                process2Title: "Konzept und Design",
+                process2Desc: "Wir entwickeln gemeinsam die Richtung, das Design und den Prototyp.",
+                process3Title: "Entwicklung",
+                process3Desc: "Danach wird die eigentliche L\u00f6sung entwickelt. Wir halten Sie auf dem Laufenden, wie weit wir sind.",
+                process4Title: "Testen und Launch",
+                process4Desc: "Wir testen alles auf Smartphone, Tablet und Desktop. Wenn alles passt, geht die L\u00f6sung online.",
+                process5Title: "Weiterentwicklung",
+                process5Desc: "Auch nach dem Launch bleiben wir verf\u00fcgbar. Wir entwickeln die L\u00f6sung weiter und verbessern sie.",
+
                 teamMember1Name: "Jamie Ley",
-                teamMember1Role: "CEO & Mitgründer",
-                teamMember1Bio: "Jamie ist leidenschaftlich daran interessiert, die Grenzen der KI und ihre praktischen Anwendungen im Geschäftsleben zu erweitern. Mit über 10 Jahren Erfahrung im maschinellen Lernen leitet er unsere Vision, KI-Lösungen für Unternehmen aller Größenordnungen zu bringen.",
                 teamMember2Name: "Steen Beckers",
-                teamMember2Role: "CTO",
-                teamMember2Bio: "Steen leitet unser technisches Team mit Expertise im maschinellen Lernen und in der KI-Systemarchitektur. Er ist bestrebt, robuste, skalierbare KI-Lösungen zu schaffen, die reale Geschäftsprobleme lösen.",
-                teamMember3Name: "Senay Ocakdan",
-                teamMember3Role: "Lead KI-Ingenieur",
-                teamMember3Bio: "Senay spezialisiert sich auf die Entwicklung modernster KI-Algorithmen und -Modelle. Mit einem Hintergrund in Data Science und Softwareentwicklung sorgt er dafür, dass unsere Lösungen sowohl innovativ als auch zuverlässig sind.",
-                
-                // Footer Navigation
+
                 footerNav: "Navigation",
                 footerLegal: "Rechtliches",
                 footerContact: "Kontakt",
                 cookiePolicy: "Cookie-Richtlinie",
                 termsOfUse: "Nutzungsbedingungen",
-                privacyPolicy: "Datenschutz"
+                privacyPolicy: "Datenschutz",
+
+                cookieText: "Diese Website verwendet Cookies, damit alles richtig funktioniert. Wir verwenden nur die n\u00f6tigen.",
+                cookieAccept: "Akzeptieren",
+                selectLanguage: "Sprache w\u00e4hlen",
+
+                formFirstName: "Vorname",
+                formLastName: "Nachname",
+                formEmail: "E-Mail",
+                formCompany: "Firma (optional)",
+                formPhone: "Telefonnummer",
+                formMessage: "Nachricht",
+                formSubmit: "Anfrage senden",
+                formSending: "Wird gesendet...",
+                formSuccess: "Vielen Dank. Ihre Anfrage ist bei uns und wir melden uns innerhalb von 24 Stunden.",
+                formError: "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an {email}."
             },
             fr: {
                 home: "Accueil",
                 services: "Services",
                 process: "Processus",
-                team: "Équipe",
+                team: "\u00c9quipe",
                 contact: "Contact",
-                bookAppointment: "Prendre Rendez-vous",
-                getStarted: "Commencer",
-                freeConsultation: "Planifier une Consultation Gratuite",
+                bookAppointment: "Prendre rendez-vous",
+                getStarted: "\u00c9crivez-nous",
+                freeConsultation: "Demander un entretien gratuit",
                 heroTitle: "Nous vous apportons le futur",
-                heroSubtitle: "Transformer votre vision en solutions concrètes avec la technologie IA de pointe",
-                servicesTitle: "Nos Solutions IA",
-                servicesDesc: "Nous sommes spécialisés dans le développement de solutions IA personnalisées qui stimulent l'innovation et l'efficacité pour votre entreprise.",
-                processTitle: "Notre Processus",
-                processDesc: "Nous suivons une approche structurée pour garantir que vos solutions IA sont livrées efficacement et efficientement.",
-                teamTitle: "Notre Équipe",
-                teamDesc: "Rencontrez les esprits passionnés derrière nos solutions IA",
-                footerTitle: "Construisons Demain Ensemble",
-                copyright: "© 2025 Nave. Tous droits réservés.",
-                
-                // Service Grids
-                service1Title: "Assistants IA",
-                service1Desc: "Assistants téléphoniques et WhatsApp intelligents pour les rendez-vous et le support client, adaptés à vos besoins.",
-                service2Title: "Agents RAG",
-                service2Desc: "Systèmes avancés de recherche et de classification de données pour organiser et exploiter les informations de votre entreprise.",
-                service3Title: "Créateurs de Contenu",
-                service3Desc: "Outils de génération de contenu et de découverte d'idées alimentés par l'IA pour stimuler votre marketing et votre innovation.",
-                
-                // Process Steps
-                process1Title: "Découverte & Analyse",
-                process1Desc: "Nous commençons par comprendre profondément vos besoins commerciaux, défis et objectifs. Grâce à des ateliers et des analyses, nous identifions les opportunités où l'IA peut apporter le plus de valeur.",
-                process2Title: "Conception de Solution",
-                process2Desc: "Nos experts créent une architecture IA sur mesure spécifiquement pour vos besoins. Nous concevons des interfaces intuitives et planifions une intégration transparente avec vos systèmes existants.",
-                process3Title: "Développement & Test",
-                process3Desc: "Notre équipe construit des modèles IA robustes utilisant des technologies de pointe. Nous effectuons des tests rigoureux pour garantir les performances, la précision et la fiabilité avant le déploiement.",
-                process4Title: "Déploiement & Support",
-                process4Desc: "Nous mettons en œuvre la solution avec un minimum de perturbation et fournissons une formation complète. Notre support continu garantit que votre système IA continue de fournir de la valeur.",
-                
-                // Team Members
+                heroTagline: "Votre vision est notre passion",
+                servicesTitle: "Nos services",
+                servicesDesc: "Nous cr\u00e9ons des solutions num\u00e9riques pour les entreprises. De la premi\u00e8re id\u00e9e au site termin\u00e9, tout vient d\u2019une seule \u00e9quipe.",
+                processTitle: "Notre processus",
+                processDesc: "Cinq \u00e9tapes, un prix fixe et des accords clairs.",
+                clientsTitle: "Nos clients",
+                clientsDesc: "Des projets que nous avons d\u00e9j\u00e0 r\u00e9alis\u00e9s.",
+                teamTitle: "Notre \u00e9quipe",
+                teamDesc: "Les personnes derri\u00e8re Nave",
+                footerTitle: "Commen\u00e7ons ensemble",
+                copyright: "\u00a9 2025 Nave. Tous droits r\u00e9serv\u00e9s.",
+
+                service1Title: "Sites web",
+                service1Desc: "Sites d\u2019entreprise et boutiques en ligne qui se chargent vite et tournent bien. Con\u00e7us pour la performance et pour votre soci\u00e9t\u00e9.",
+                service2Title: "Applications",
+                service2Desc: "Des applications pour t\u00e9l\u00e9phone et tablette qui simplifient votre travail et num\u00e9risent vos processus.",
+                service3Title: "Agents IA",
+                service3Desc: "Agents IA, automatisation et solutions intelligentes. Nous les utilisons uniquement l\u00e0 o\u00f9 ils apportent un b\u00e9n\u00e9fice clair \u00e0 votre entreprise.",
+
+                process1Title: "Premier entretien",
+                process1Desc: "Nous \u00e9coutons et comprenons votre projet. D\u00e8s ce premier entretien, nous apportons nos propres id\u00e9es et pistes de solution.",
+                process2Title: "Concept et design",
+                process2Desc: "Nous d\u00e9finissons ensemble la direction, le design et le prototype.",
+                process3Title: "D\u00e9veloppement",
+                process3Desc: "Ensuite, nous d\u00e9veloppons la solution. Nous vous tenons au courant de l\u2019avancement.",
+                process4Title: "Tests et lancement",
+                process4Desc: "Nous testons tout sur t\u00e9l\u00e9phone, tablette et ordinateur. Quand tout est bon, la solution est mise en ligne.",
+                process5Title: "Suivi",
+                process5Desc: "Nous restons disponibles apr\u00e8s le lancement. Nous continuons \u00e0 faire \u00e9voluer et \u00e0 am\u00e9liorer la solution.",
+
                 teamMember1Name: "Jamie Ley",
-                teamMember1Role: "PDG & Cofondateur",
-                teamMember1Bio: "Jamie est passionné par le repoussement des limites de l'IA et ses applications pratiques dans les entreprises. Avec plus de 10 ans d'expérience en apprentissage automatique, il dirige notre vision d'apporter des solutions IA aux entreprises de toutes tailles.",
                 teamMember2Name: "Steen Beckers",
-                teamMember2Role: "Directeur Technique",
-                teamMember2Bio: "Steen dirige notre équipe technique avec une expertise en apprentissage automatique et en architecture de systèmes IA. Il se consacre à la création de solutions IA robustes et évolutives qui résolvent de véritables défis commerciaux.",
-                teamMember3Name: "Senay Ocakdan",
-                teamMember3Role: "Ingénieur IA Principal",
-                teamMember3Bio: "Senay se spécialise dans le développement d'algorithmes et de modèles IA de pointe. Avec une formation en science des données et en génie logiciel, il veille à ce que nos solutions soient à la fois innovantes et fiables.",
-                
-                // Footer Navigation
+
                 footerNav: "Navigation",
-                footerLegal: "Légal",
+                footerLegal: "L\u00e9gal",
                 footerContact: "Contact",
-                cookiePolicy: "Politique des Cookies",
-                termsOfUse: "Conditions d'Utilisation",
-                privacyPolicy: "Politique de Confidentialité"
+                cookiePolicy: "Politique des cookies",
+                termsOfUse: "Conditions d\u2019utilisation",
+                privacyPolicy: "Politique de confidentialit\u00e9",
+
+                cookieText: "Ce site utilise des cookies pour que tout fonctionne correctement. Nous n\u2019utilisons que ceux qui sont n\u00e9cessaires.",
+                cookieAccept: "Accepter",
+                selectLanguage: "Choisir la langue",
+
+                formFirstName: "Pr\u00e9nom",
+                formLastName: "Nom",
+                formEmail: "E-mail",
+                formCompany: "Entreprise (facultatif)",
+                formPhone: "Num\u00e9ro de t\u00e9l\u00e9phone",
+                formMessage: "Message",
+                formSubmit: "Envoyer la demande",
+                formSending: "Envoi en cours...",
+                formSuccess: "Merci. Nous avons bien re\u00e7u votre demande et nous vous r\u00e9pondrons sous 24 heures.",
+                formError: "Votre demande n\u2019a pas pu \u00eatre envoy\u00e9e. Merci de r\u00e9essayer ou de nous \u00e9crire \u00e0 {email}."
             },
             lu: {
-                home: "Haaptsäit",
+                home: "Haapts\u00e4it",
                 services: "Servicer",
                 process: "Prozess",
-                team: "Equipe",
+                team: "Team",
                 contact: "Kontakt",
                 bookAppointment: "Rendez-vous huelen",
-                getStarted: "Ufänken",
-                freeConsultation: "Gratis Berodung plangen",
-                heroTitle: "Mir bréngen d’Zukunft bei Iech",
-                heroSubtitle: "Är Visioun an konkret Léisungen ëmsetzen mat modernster KI-Technologie",
-                servicesTitle: "Eis KI-Léisungen",
-                servicesDesc: "Mir spezialiséiere eis op d’Entwécklung vu personaliséierte KI-Léisungen, déi Innovatioun an Effizienz an Ärem Betrib fërderen.",
+                getStarted: "Schreiwt eis",
+                freeConsultation: "Gratis Gespr\u00e9ich ufroen",
+                heroTitle: "Mir br\u00e9ngen d\u2019Zukunft bei Iech",
+                heroTagline: "\u00c4r Visioun ass eis Passioun",
+                servicesTitle: "Eis Servicer",
+                servicesDesc: "Mir entw\u00e9ckelen digital L\u00e9isunge fir Betriber. Vun der \u00e9ischter Iddi bis zur f\u00e4erdeger S\u00e4it kritt Dir alles aus enger Hand.",
                 processTitle: "Eise Prozess",
-                processDesc: "Mir benotze eng strukturéiert Approche fir ze garantéieren, datt Är KI-Léisunge effizient a wierksam geliwwert ginn.",
+                processDesc: "F\u00ebnnef Schr\u00ebtt, e feste Pr\u00e4is a kloer Ofsproochen.",
+                clientsTitle: "Eis Clienten",
+                clientsDesc: "Projeten, d\u00e9i mir schonn \u00ebmgesat hunn.",
                 teamTitle: "Eist Team",
-                teamDesc: "Léiert d'passionéiert Kapp hanner eise KI-Lösungen kennen",
-                footerTitle: "Loosst eis Muer zesummen bauen",
-                copyright: "© 2025 Nave. All Rechter reservéiert.",
-                
-                // Service Grids
-                service1Title: "KI Assistenten",
-                service1Desc: "Intelligent Telefon- a WhatsApp-Assistenten fir Rendez-vousen an Clientsupport, ugepasst un Är Besoinen.",
-                service2Title: "RAG Agenten",
-                service2Desc: "Fortgeschratt Systemer fir Dateklassifikatioun an -organisatioun, fir d’Informatiounen vun Ärer Entreprise besser ze notzen.",
-                service3Title: "Content Creator",
-                service3Desc: "KI-ugedriwwe Tools fir Contenu ze generéieren an nei Iddie fir Äert Marketing an Innovatioun ze fannen.",
-                
-                // Process Steps
-                process1Title: "Entdeckung & Analys",
-                process1Desc: "Mir fänken un, andeems mir Är Betribsbesoinen, Erausfuerderungen an Ziler déifgräifend verstoen. Duerch Analysen identifizéiere mir Geleeënheeten, wou KI de meeschte Wäert ka bréngen.",
-                process2Title: "Léisungsdesign",
-                process2Desc: "Eis Experten entwéckele eng personaliséiert KI-Architektur, déi speziell un Är Ufuerderungen ugepasst ass. Mir designen intuitiv Interface an plangen eng nahtlos Integratioun mat Äre bestehende Systemer.",
-                process3Title: "Entwécklung & Testing",
-                process3Desc: "Eist Team baut robust KI-Modeller mat modernster Technologie. Mir féieren streng Tester duerch, fir Leeschtung, Genauegkeet a Verlässlechkeet virum Asaz ze garantéieren.",
-                process4Title: "Asaz & Support",
-                process4Desc: "Mir setzen d'Léisung mat minimaler Ënnerbriechung ëm a bidden eng ëmfaassend Formatioun. Eise weiderféierende Support garantéiert, datt Äert KI-System weider Wäert liwwert.",
-                
-                // Team Members
+                teamDesc: "D\u2019Leit hannert Nave",
+                footerTitle: "Loosst eis zesummen uf\u00e4nken",
+                copyright: "\u00a9 2025 Nave. All Rechter reserv\u00e9iert.",
+
+                service1Title: "Webs\u00e4iten",
+                service1Desc: "Firmes\u00e4iten an Online-Shops, d\u00e9i s\u00e9ier lueden a sauber lafen. Performant gebaut a passend zu \u00c4rem Betrib.",
+                service2Title: "Applikatiounen",
+                service2Desc: "Applikatiounen fir Handy an Tablet, d\u00e9i \u00c4r Aarbechtsofleef vereinfachen an \u00c4r Prozesser digitalis\u00e9ieren.",
+                service3Title: "KI-Agenten",
+                service3Desc: "KI-Agenten, Automatisatioun an intelligent L\u00e9isungen. Mir setzen se just do an, wou se \u00c4rem Betrib e kloren Notzen br\u00e9ngen.",
+
+                process1Title: "\u00c9ischt Gespr\u00e9ich",
+                process1Desc: "Mir lauschteren Iech no a verstinn \u00c4re Projet. Schonn an d\u00ebsem \u00e9ischte Gespr\u00e9ich br\u00e9ngen mir eegen Iddien a m\u00e9iglech L\u00e9isungswee\u00ebr mat.",
+                process2Title: "Konzept a Design",
+                process2Desc: "Mir entw\u00e9ckelen zesummen d\u2019Richtung, d\u2019Design an de Prototyp.",
+                process3Title: "Entw\u00e9cklung",
+                process3Desc: "Duerno g\u00ebtt d\u00e9i eigentlech L\u00e9isung entw\u00e9ckelt. Mir halen Iech um Lafenden, w\u00e9i w\u00e4it mir sinn.",
+                process4Title: "Tester a Lancement",
+                process4Desc: "Mir testen alles op Handy, Tablet a Computer. Wann alles passt, g\u00ebtt d\u2019L\u00e9isung online gestallt.",
+                process5Title: "Weiderentw\u00e9cklung",
+                process5Desc: "Och nodeem alles online ass, bleiwe mir do. Mir entw\u00e9ckelen d\u2019L\u00e9isung weider a verbesseren se.",
+
                 teamMember1Name: "Jamie Ley",
-                teamMember1Role: "CEO & Co-Grënner",
-                teamMember1Bio: "Jamie ass passiéiert dovun, d'Grenze vun der KI an hir praktesch Uwendungen am Geschäftsliewe z'erweideren. Mat iwwer 10 Joer Erfahrung am maschinelle Léieren, leit hien eis Visioun, KI-Léisunge fir Ënnernehmen vun all Gréissten ze bréngen.",
                 teamMember2Name: "Steen Beckers",
-                teamMember2Role: "CTO",
-                teamMember2Bio: "Steen leit eist technescht Team mat Expertise am maschinelle Léieren an an der KI-Systemarchitektur. Hien ass bestrieft, robust, skaléierbar KI-Léisungen ze schafen, déi real Geschäftsproblemer léisen.",
-                teamMember3Name: "Senay Ocakdan",
-                teamMember3Role: "Lead KI Ingenieur",
-                teamMember3Bio: "Senay spezialiséiert sech op d'Entwécklung vun modernsten KI-Algorithmen a -Modeller. Mat engem Hannergrond an Data Science a Softwareentwécklung, suergt hien dofir, datt eis Léisungen souwuel innovativ wéi och zouverlässeg sinn.",
-                
-                // Footer Navigation
+
                 footerNav: "Navigatioun",
                 footerLegal: "Legal",
                 footerContact: "Kontakt",
                 cookiePolicy: "Cookie-Richtlinn",
-                termsOfUse: "Benotzungsbedéngungen",
-                privacyPolicy: "Dateschutzrichtlinn"
+                termsOfUse: "Benotzungsbed\u00e9ngungen",
+                privacyPolicy: "Dateschutzrichtlinn",
+
+                cookieText: "D\u00ebs Webs\u00e4it benotzt Cookien, fir datt alles richteg funktion\u00e9iert. Mir benotzen n\u00ebmmen d\u00e9i n\u00e9ideg.",
+                cookieAccept: "Akzept\u00e9ieren",
+                selectLanguage: "Sprooch wielen",
+
+                formFirstName: "Virnumm",
+                formLastName: "Numm",
+                formEmail: "E-Mail",
+                formCompany: "Firma (fakultativ)",
+                formPhone: "Telefonsnummer",
+                formMessage: "Noriicht",
+                formSubmit: "Ufro sch\u00e9cken",
+                formSending: "G\u00ebtt gesch\u00e9ckt...",
+                formSuccess: "Merci. Mir hunn \u00c4r Ufro kritt a mellen eis bannent 24 Stonnen.",
+                formError: "D\u2019Ufro konnt net gesch\u00e9ckt ginn. Prob\u00e9iert w.e.g. nach eng K\u00e9ier oder schreift eis op {email}."
             }
         };
 
@@ -1924,9 +2754,48 @@ Website: nave.lu</p>`
         }
 
         // Event Listeners
+        function setMenu(open) {
+            fullscreenMenu.classList.toggle('active', open);
+            menuToggle.classList.toggle('open', open);
+            menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+
         menuToggle.addEventListener('click', () => {
-            fullscreenMenu.classList.toggle('active');
-            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : '';
+            setMenu(!fullscreenMenu.classList.contains('active'));
+        });
+
+        // och mat der Tastatur bedéngbar
+        menuToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setMenu(!fullscreenMenu.classList.contains('active'));
+            }
+        });
+
+        // D'Linken am Vollbild-Menü haten bis elo guer kee Klick-Handler:
+        // d'Menü ass op bliwwen an et huet ausgesinn, wéi wann näischt géif geschéien.
+        // De Lauschterer sëtzt um Container, net op de eenzelne Linken. Esou
+        // funktionéiert en och, wann d'Linken duerch de Sproochwiessel ugefaasst ginn.
+        fullscreenMenu.addEventListener('click', (e) => {
+            const link = e.target.closest('.menu-link');
+            if (!link) return;
+
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            setMenu(false);
+
+            if (target) {
+                // kuerz waarden, bis d'Menü zou ass, soss stéiert de gespaarte Scroll
+                setTimeout(() => {
+                    window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+                }, 220);
+            }
+        });
+
+        // Escape mécht d'Menü zou
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) setMenu(false);
         });
         
         appointmentBtn.addEventListener('click', () => {
@@ -1970,10 +2839,63 @@ Website: nave.lu</p>`
             });
         });
         
-        appointmentForm.addEventListener('submit', (e) => {
-            alert('Thank you for your appointment request. We will contact you shortly.');
-            appointmentModal.classList.remove('active');
-            document.body.style.overflow = '';
+        function showFormStatus(type, message) {
+            formStatus.textContent = message;
+            formStatus.classList.remove('success', 'error');
+            formStatus.classList.add('visible', type);
+        }
+
+        appointmentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!appointmentForm.checkValidity()) {
+                appointmentForm.reportValidity();
+                return;
+            }
+
+            const t = languageContent[currentLang] || languageContent[DEFAULT_LANG];
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = t.formSending;
+            formStatus.classList.remove('visible', 'success', 'error');
+
+            const data = Object.fromEntries(new FormData(appointmentForm).entries());
+            data._subject = 'Nei Rendez-vous-Ufro (' + currentLang.toUpperCase() + ') - ' + (data.firstName || '') + ' ' + (data.lastName || '');
+            data._template = 'table';
+            data._captcha = 'false';
+
+            try {
+                const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // FormSubmit äntwert och bei engem Feeler mat HTTP 200 an
+                // {"success":"false"} am Body. Dofir muss de Body gelies ginn,
+                // soss weist d'Säit gréng "Merci", obwuel näischt ukomm ass.
+                let payload = null;
+                try { payload = await res.json(); } catch (e) { /* kee JSON */ }
+
+                const geschéckt = res.ok && payload && String(payload.success) === 'true';
+
+                if (!geschéckt) {
+                    const msg = (payload && payload.message) || ('HTTP ' + res.status);
+                    throw new Error(msg);
+                }
+
+                appointmentForm.reset();
+                showFormStatus('success', t.formSuccess);
+            } catch (err) {
+                console.error('Formulaire konnt net geschéckt ginn:', err);
+                showFormStatus('error', t.formError.replace('{email}', CONTACT_EMAIL));
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = t.formSubmit;
+            }
         });
         
         // Smooth scrolling for navigation links
@@ -1996,6 +2918,16 @@ Website: nave.lu</p>`
             });
         });
 
+        // Weich zum Kontakt scrollen, wann een um Hero op "Kontakt" klickt
+        const heroContactBtn = document.getElementById('heroContactBtn');
+        if (heroContactBtn) {
+            heroContactBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(heroContactBtn.getAttribute('href'));
+                if (target) window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+            });
+        }
+
         // Smooth scrolling for footer navigation links
         footerNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -2010,16 +2942,25 @@ Website: nave.lu</p>`
             });
         });
 
-        // Load saved language or default to English
-        window.addEventListener('load', () => {
-            const savedLang = localStorage.getItem('selectedLang') || 'en';
-            setLanguage(savedLang);
+        // Gespäichert Sprooch lueden, soss d'Standardsprooch (Lëtzebuergesch)
+        let currentLang = DEFAULT_LANG;
+
+        function applySavedLanguage() {
+            const savedLang = localStorage.getItem('selectedLang');
+            const lang = languageContent[savedLang] ? savedLang : DEFAULT_LANG;
+            setLanguage(lang);
 
             // Mark button as active
             languageBtns.forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === savedLang);
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', applySavedLanguage);
+        } else {
+            applySavedLanguage();
+        }
         
         // Language functionality
         languageBtns.forEach(btn => {
@@ -2060,6 +3001,10 @@ Website: nave.lu</p>`
         // Function to set language
         function setLanguage(lang) {
             const content = languageContent[lang];
+            if (!content) return;
+
+            currentLang = lang;
+            document.documentElement.lang = (lang === 'lu') ? 'lb' : lang;
             
             // Update navigation
             document.querySelectorAll('.nav-link').forEach((link, index) => {
@@ -2067,7 +3012,30 @@ Website: nave.lu</p>`
                 if (index === 1) link.textContent = content.services;
                 if (index === 2) link.textContent = content.process;
                 if (index === 3) link.textContent = content.team;
+                if (index === 4) link.textContent = content.contact;
             });
+            
+            // Update mobile fullscreen menu
+            const menuLabels = [content.home, content.services, content.process, content.team, content.contact];
+            document.querySelectorAll('.menu-link').forEach((link, index) => {
+                if (menuLabels[index]) link.textContent = menuLabels[index];
+            });
+            
+            // Update cookie banner
+            document.querySelector('.cookie-content p').textContent = content.cookieText;
+            document.querySelector('.cookie-btn.accept-btn').textContent = content.cookieAccept;
+            document.getElementById('showGuidelines').textContent = content.cookiePolicy;
+            
+            // Update appointment modal
+            document.getElementById('appointmentTitle').textContent = content.bookAppointment;
+            document.getElementById('labelFirstName').textContent = content.formFirstName;
+            document.getElementById('labelLastName').textContent = content.formLastName;
+            document.getElementById('labelEmail').textContent = content.formEmail;
+            document.getElementById('labelCompany').textContent = content.formCompany;
+            document.getElementById('labelPhone').textContent = content.formPhone;
+            document.getElementById('labelMessage').textContent = content.formMessage;
+            document.getElementById('submitBtn').textContent = content.formSubmit;
+            document.getElementById('languageModalTitle').textContent = content.selectLanguage;
             
             // Update buttons
             document.getElementById('appointmentBtn').textContent = content.bookAppointment;
@@ -2076,7 +3044,7 @@ Website: nave.lu</p>`
             
             // Update hero section
             document.querySelector('.hero-title').textContent = content.heroTitle;
-            document.querySelector('.hero-subtitle').textContent = content.heroSubtitle;
+            document.querySelector('.hero-tagline').textContent = content.heroTagline;
             
             // Update services section
             document.querySelector('#services .section-title').textContent = content.servicesTitle;
@@ -2106,11 +3074,17 @@ Website: nave.lu</p>`
             processTitles[1].textContent = content.process2Title;
             processTitles[2].textContent = content.process3Title;
             processTitles[3].textContent = content.process4Title;
+            processTitles[4].textContent = content.process5Title;
             
             processDescriptions[0].textContent = content.process1Desc;
             processDescriptions[1].textContent = content.process2Desc;
             processDescriptions[2].textContent = content.process3Desc;
             processDescriptions[3].textContent = content.process4Desc;
+            processDescriptions[4].textContent = content.process5Desc;
+            
+            // Update clients section
+            document.querySelector('#clients .section-title').textContent = content.clientsTitle;
+            document.querySelector('#clients .clients-intro').textContent = content.clientsDesc;
             
             // Update team section
             document.querySelector('#team .section-title').textContent = content.teamTitle;
@@ -2118,20 +3092,9 @@ Website: nave.lu</p>`
             
             // Update team members
             const memberNames = document.querySelectorAll('.member-name');
-            const memberRoles = document.querySelectorAll('.member-role');
-            const memberBios = document.querySelectorAll('.member-bio');
             
             memberNames[0].textContent = content.teamMember1Name;
             memberNames[1].textContent = content.teamMember2Name;
-            memberNames[2].textContent = content.teamMember3Name;
-            
-            memberRoles[0].textContent = content.teamMember1Role;
-            memberRoles[1].textContent = content.teamMember2Role;
-            memberRoles[2].textContent = content.teamMember3Role;
-            
-            memberBios[0].textContent = content.teamMember1Bio;
-            memberBios[1].textContent = content.teamMember2Bio;
-            memberBios[2].textContent = content.teamMember3Bio;
             
             // Update footer
             document.querySelector('.cta-title').textContent = content.footerTitle;
@@ -2153,6 +3116,13 @@ Website: nave.lu</p>`
             footerLinks[5].textContent = content.cookiePolicy;
             footerLinks[6].textContent = content.termsOfUse;
             footerLinks[7].textContent = content.privacyPolicy;
+
+            // Kontakt-Knäppchen um Hero
+            const heroContact = document.getElementById('heroContactBtn');
+            if (heroContact) heroContact.textContent = content.contact;
+
+            // Hero-Titel nei a Wierder opdeelen (setLanguage huet den Text iwwerschriwwen)
+            splitHeroTitle();
         }
         
         // Function to show policy modal
@@ -2201,24 +3171,9 @@ Website: nave.lu</p>`
                 header.style.padding = '20px 5%';
             }
             
-            // Animate all elements with the 'animate' class
-            animatedElements.forEach(element => {
-                if (element.length) {
-                    // Handle NodeList
-                    element.forEach(el => {
-                        const elementPosition = el.getBoundingClientRect().top;
-                        if (elementPosition < windowHeight * 0.85) {
-                            el.classList.add('animate');
-                        }
-                    });
-                } else {
-                    // Handle single element
-                    const elementPosition = element.getBoundingClientRect().top;
-                    if (elementPosition < windowHeight * 0.85) {
-                        element.classList.add('animate');
-                    }
-                }
-            });
+            // D'Sektiounen: syncReveal() setzt .animate op an erëm ewech,
+            // domat spillt all Animatioun bei all Duerchgang nei of.
+            syncReveal();
         }
         
         // Initial check for elements in view
@@ -2226,16 +3181,15 @@ Website: nave.lu</p>`
         
         // Check screen width and show/hide menu toggle accordingly
         function checkScreenWidth() {
+            // De Sproochwiessel gëtt hei bewosst NET verstoppt.
+            // E muss op all Bildschiermgréisst erreechbar bleiwen.
             if (window.innerWidth <= 968) {
                 menuToggle.style.display = 'flex';
                 document.querySelector('.nav-links').style.display = 'none';
-                document.querySelector('.language-selector').style.display = 'none';
             } else {
                 menuToggle.style.display = 'none';
                 document.querySelector('.nav-links').style.display = 'flex';
-                document.querySelector('.language-selector').style.display = 'flex';
-                fullscreenMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                setMenu(false);
             }
         }
         
@@ -2248,47 +3202,220 @@ Website: nave.lu</p>`
             shape.style.animationDelay = `${Math.random() * 5}s`;
         });
 
-        // Add click event to language buttons to show modal on mobile
-        if (window.innerWidth <= 968) {
-            document.querySelector('.menu-items').innerHTML += `
-                <li class="menu-item">
-                    <div class="language-options-mobile">
-                        <button class="language-option-mobile active" data-lang="en">English</button>
-                        <button class="language-option-mobile" data-lang="de">Deutsch</button>
-                        <button class="language-option-mobile" data-lang="fr">Français</button>
-                        <button class="language-option-mobile" data-lang="lu">Lëtzebuergesch</button>
-                    </div>
-                </li>
-            `;
-            
-            document.querySelectorAll('.language-option-mobile').forEach(option => {
-                option.addEventListener('click', () => {
-                    const lang = option.getAttribute('data-lang');
-                    setLanguage(lang);
-                    
-                    // Update active state
-                    document.querySelectorAll('.language-option-mobile').forEach(b => b.classList.remove('active'));
-                    option.classList.add('active');
-                    
-                    fullscreenMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
+        /* Hei goufen fréier op klenge Schiirmer Sprooch-Knäppercher an d'Menü
+           gesat. Dat ass ewech, aus zwee Grënn:
+           1. 'innerHTML +=' huet d'Menü nei opgebaut an dobäi ALL Klick-Handler
+              vun de Menü-Linken zerstéiert. Dofir huet e Klick op e Menüpunkt
+              näischt gemaach.
+           2. De Sproochwiessel steet elo souwisou ëmmer uewen an der Kopfzeil,
+              och op dem Handy. Eng zweete Kopie brauch et net.
+           D'Knäppercher haten ausserdeem keng CSS a stoungen fest op Englesch. */
         
         // Initialize particles
         initParticles();
         
-        // Animate header elements on load
-        setTimeout(() => {
-            document.querySelector('.logo').classList.add('animate');
-            document.querySelectorAll('.nav-link').forEach((link, index) => {
-                setTimeout(() => {
-                    link.classList.add('animate');
-                }, 100 * index);
+        /* ==================================================================
+           NAVE: Intro, wiederholbare Scroll-Animatiounen, Cursor, Tilt
+           ================================================================== */
+
+        const INTRO_MIN_MS = 2300;   // sou laang bleift d'Logo op mannst stoen
+        const INTRO_MAX_MS = 7000;   // Noutbrems, falls e Bild net luede wëll
+        const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        /* ---- Scroll-Animatiounen, déi bei all Duerchgang nei ofspillen ---- */
+        // 'var', well animateOnScroll() weider uewen am Script scho syncReveal() rifft
+        var revealEls = [];
+
+        function revealTargets() {
+            return [
+                document.querySelector('.hero-title'),
+                document.querySelector('.hero-tagline'),
+                document.querySelector('.hero-cta'),
+                // déi zwee Knäppercher hunn hir eege opacity:0 an hu virdru ni
+                // .animate kritt, dofir waren se onsichtbar
+                document.getElementById('heroAppointmentBtn'),
+                document.getElementById('heroContactBtn'),
+                document.getElementById('footerAppointmentBtn'),
+                ...document.querySelectorAll('.section-title'),
+                document.querySelector('.services-intro'),
+                ...document.querySelectorAll('.service-card'),
+                document.querySelector('.process-intro'),
+                ...document.querySelectorAll('.process-step'),
+                document.querySelector('.clients-intro'),
+                ...document.querySelectorAll('.client-card'),
+                document.querySelector('.team-intro'),
+                ...document.querySelectorAll('.team-member'),
+                document.querySelector('.cta-title'),
+                ...document.querySelectorAll('.footer-column')
+            ].filter(Boolean);
+        }
+
+        // Rechent fir all Element, ob et grad an der Sichtzone ass, an setzt
+        // d'Klass .animate entspriechend, an och erëm ewech, wann et raus scrollt.
+        // Dofir spillt d'Animatioun bei all Duerchgang nei of.
+        function syncReveal() {
+            if (!revealEls || !revealEls.length) return;
+            const h = window.innerHeight;
+
+            revealEls.forEach(el => {
+                const r = el.getBoundingClientRect();
+                // gläiche Startpunkt wéi virdrun: 85% vun der Fënsterhéicht
+                const visible = r.top < h * 0.85 && r.bottom > 0;
+
+                el.classList.toggle('animate', visible);
+
+                // Neigung zerécksetzen, wann d'Kaart aus dem Bild ass
+                if (!visible && el.style.transform) {
+                    el.style.transform = '';
+                    el.classList.remove('tilting');
+                }
             });
-            document.querySelector('.appointment-btn').classList.add('animate');
-        }, 500);
+        }
+
+        function initScrollReveal() {
+            revealEls = revealTargets();
+            syncReveal();
+            window.addEventListener('resize', syncReveal);
+        }
+
+        /* ---- Header-Elementer no dem Intro erakommen loossen ---- */
+        function startEntrance() {
+            const headerBits = [
+                document.querySelector('.logo'),
+                ...document.querySelectorAll('.nav-link'),
+                document.querySelector('.appointment-btn')
+            ].filter(Boolean);
+
+            headerBits.forEach((el, i) => {
+                setTimeout(() => el.classList.add('animate'), i * 90);
+            });
+
+            initScrollReveal();
+        }
+
+        /* ---- Intro: um Ufank just d'Logo, dann hieft sech d'Säit erop ---- */
+        (function runIntro() {
+            const intro = document.getElementById('intro');
+            if (!intro) { startEntrance(); return; }
+
+            document.body.classList.add('intro-open');
+            let done = false;
+
+            function finish() {
+                if (done) return;
+                done = true;
+                intro.classList.add('lift');
+                document.body.classList.remove('intro-open');
+                startEntrance();
+                setTimeout(() => intro.remove(), 1400);
+            }
+
+            if (REDUCED) { finish(); return; }
+
+            const t0 = Date.now();
+            function ready() {
+                setTimeout(finish, Math.max(0, INTRO_MIN_MS - (Date.now() - t0)));
+            }
+
+            // Nëmmen op d'Logo waarden, net op déi grouss Fotoen am Rescht vun der Säit
+            const introLogo = intro.querySelector('.intro-logo');
+            if (introLogo && !introLogo.complete) {
+                introLogo.addEventListener('load', ready, { once: true });
+                introLogo.addEventListener('error', ready, { once: true });
+            } else {
+                ready();
+            }
+
+            setTimeout(finish, INTRO_MAX_MS);
+        })();
+
+        /* ---- Eegene Cursor, just op Maus-Geräter ---- */
+        if (FINE_POINTER && !REDUCED) {
+            const dot = document.getElementById('cursorDot');
+
+            document.body.classList.add('cursor-on');
+
+            window.addEventListener('mousemove', e => {
+                dot.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
+            }, { passive: true });
+
+            const hoverSel = 'a, button, .service-card, .team-member, .language-btn, .form-input, .close-modal';
+            document.addEventListener('mouseover', e => {
+                if (e.target.closest(hoverSel)) document.body.classList.add('cursor-hover');
+            });
+            document.addEventListener('mouseout', e => {
+                if (e.target.closest(hoverSel)) document.body.classList.remove('cursor-hover');
+            });
+            document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-on'));
+            document.addEventListener('mouseenter', () => document.body.classList.add('cursor-on'));
+        }
+
+        /* ---- Kaarten: liicht 3D-Neigung mat Liichtreflex ---- */
+        if (FINE_POINTER && !REDUCED) {
+            document.querySelectorAll('.service-card, .team-member').forEach(card => {
+                const glare = document.createElement('div');
+                glare.className = 'card-glare';
+                card.appendChild(glare);
+
+                card.addEventListener('mousemove', e => {
+                    const r = card.getBoundingClientRect();
+                    const px = (e.clientX - r.left) / r.width;
+                    const py = (e.clientY - r.top) / r.height;
+                    const rotY = (px - 0.5) * 9;
+                    const rotX = (0.5 - py) * 9;
+
+                    card.classList.add('tilting');
+                    card.style.transform =
+                        'perspective(900px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' +
+                        rotY.toFixed(2) + 'deg) translateY(-6px) scale(1.015)';
+                    glare.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+                    glare.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('tilting');
+                    card.style.transform = '';
+                });
+            });
+        }
+
+        /* ---- Magnetesch Knäppercher ---- */
+        if (FINE_POINTER && !REDUCED) {
+            document.querySelectorAll('.appointment-btn, .submit-btn').forEach(btn => {
+                btn.addEventListener('mousemove', e => {
+                    const r = btn.getBoundingClientRect();
+                    const dx = (e.clientX - (r.left + r.width / 2)) * 0.28;
+                    const dy = (e.clientY - (r.top + r.height / 2)) * 0.34;
+                    btn.style.transform =
+                        'translate(' + dx.toFixed(1) + 'px,' + (dy - 3).toFixed(1) + 'px)';
+                });
+                btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+            });
+        }
+
+        /* ---- Hero-Titel Wuert fir Wuert erop ---- */
+        function splitHeroTitle() {
+            const el = document.querySelector('.hero-title');
+            if (!el) return;
+
+            const words = el.textContent.trim().split(/\s+/);
+            const wasVisible = el.classList.contains('animate');
+
+            el.innerHTML = words.map((w, i) =>
+                '<span class="hw" style="--i:' + i + '"><i></i></span>'
+            ).join(' ');
+            // Text als textContent setzen, domat bleift och \u00e4 \u00e9 & Co. sécher
+            el.querySelectorAll('.hw i').forEach((slot, i) => { slot.textContent = words[i]; });
+            el.classList.add('split');
+
+            // Bei engem Sproochwiessel d'Animatioun nei ofspillen
+            if (wasVisible) {
+                el.classList.remove('animate');
+                void el.offsetWidth;
+                requestAnimationFrame(() => el.classList.add('animate'));
+            }
+        }
     </script>
 </body>
 </html>
