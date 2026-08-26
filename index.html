@@ -1555,7 +1555,6 @@
 
             /* Knäppercher grouss genuch fir mat dem Fanger ze drécken */
             .appointment-btn,
-            .ghost-btn,
             .submit-btn {
                 padding: 15px 26px;
                 font-size: 0.98rem;
@@ -1661,8 +1660,7 @@
                 width: 100%;
             }
 
-            .hero-cta .appointment-btn,
-            .hero-cta .ghost-btn {
+            .hero-cta .appointment-btn {
                 flex: 1 1 100%;
                 text-align: center;
             }
@@ -1812,28 +1810,18 @@
             align-items: center;
         }
 
-        .ghost-btn {
-            display: inline-block;
-            padding: 18px 35px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--white);
-            border: 1.5px solid rgba(255, 255, 255, 0.45);
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(6px);
-            text-decoration: none;
-            transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease,
-                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.4s ease;
+
+        /* De Knäppchen am Header ass op klenge Schiirmer ausgeblent.
+           Dofir steet en hei am Balkenmenü, an ass do direkt sichtbar. */
+        .menu-cta {
+            margin-top: 34px;
         }
 
-        .ghost-btn:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--dark-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(249, 134, 45, 0.35);
+        .menu-cta .appointment-btn {
+            opacity: 1;
+            transform: none;
+            font-size: 1.05rem;
+            padding: 16px 34px;
         }
 
         /* ---- 3. Eegene Cursor ---- */
@@ -2074,6 +2062,9 @@
             <li class="menu-item"><a href="#process" class="menu-link">Prozess</a></li>
             <li class="menu-item"><a href="#team" class="menu-link">Team</a></li>
             <li class="menu-item"><a href="#contact" class="menu-link">Kontakt</a></li>
+            <li class="menu-item menu-cta">
+                <button class="appointment-btn" id="menuAppointmentBtn">Rendez-vous huelen</button>
+            </li>
         </ul>
     </div>
 
@@ -2089,7 +2080,6 @@
             <p class="hero-tagline">Är Visioun ass eis Passioun</p>
             <div class="hero-cta">
                 <button class="appointment-btn" id="heroAppointmentBtn">Schreiwt eis</button>
-                <a href="#contact" class="ghost-btn" id="heroContactBtn">Kontakt</a>
             </div>
         </div>
         <div class="transition-circle"></div>
@@ -2827,6 +2817,16 @@
         // De Lauschterer sëtzt um Container, net op de eenzelne Linken. Esou
         // funktionéiert en och, wann d'Linken duerch de Sproochwiessel ugefaasst ginn.
         fullscreenMenu.addEventListener('click', (e) => {
+            // Termin-Knäppchen am Menü
+            if (e.target.closest('#menuAppointmentBtn')) {
+                setMenu(false);
+                setTimeout(() => {
+                    appointmentModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }, 220);
+                return;
+            }
+
             const link = e.target.closest('.menu-link');
             if (!link) return;
 
@@ -2967,16 +2967,6 @@
             });
         });
 
-        // Weich zum Kontakt scrollen, wann een um Hero op "Kontakt" klickt
-        const heroContactBtn = document.getElementById('heroContactBtn');
-        if (heroContactBtn) {
-            heroContactBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(heroContactBtn.getAttribute('href'));
-                if (target) window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
-            });
-        }
-
         // Smooth scrolling for footer navigation links
         footerNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -3088,6 +3078,8 @@
             
             // Update buttons
             document.getElementById('appointmentBtn').textContent = content.bookAppointment;
+            const menuCta = document.getElementById('menuAppointmentBtn');
+            if (menuCta) menuCta.textContent = content.bookAppointment;
             document.getElementById('heroAppointmentBtn').textContent = content.getStarted;
             document.getElementById('footerAppointmentBtn').textContent = content.freeConsultation;
             
@@ -3165,10 +3157,6 @@
             footerLinks[5].textContent = content.cookiePolicy;
             footerLinks[6].textContent = content.termsOfUse;
             footerLinks[7].textContent = content.privacyPolicy;
-
-            // Kontakt-Knäppchen um Hero
-            const heroContact = document.getElementById('heroContactBtn');
-            if (heroContact) heroContact.textContent = content.contact;
 
             // Hero-Titel nei a Wierder opdeelen (setLanguage huet den Text iwwerschriwwen)
             splitHeroTitle();
@@ -3284,7 +3272,6 @@
                 // déi zwee Knäppercher hunn hir eege opacity:0 an hu virdru ni
                 // .animate kritt, dofir waren se onsichtbar
                 document.getElementById('heroAppointmentBtn'),
-                document.getElementById('heroContactBtn'),
                 document.getElementById('footerAppointmentBtn'),
                 ...document.querySelectorAll('.section-title'),
                 document.querySelector('.services-intro'),
