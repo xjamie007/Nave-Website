@@ -114,6 +114,13 @@
             }
         }
 
+        /* Op klenge Schiirmer ouni de Zentréierungs-Verschub */
+        @keyframes slideUpMobile {
+            to {
+                transform: translateY(0);
+            }
+        }
+
         .cookie-content {
             text-align: center;
             line-height: 1.6;
@@ -1585,11 +1592,32 @@
                 right: 12px;
                 width: auto;
                 max-width: none;
-                padding: 16px;
+                padding: 18px 16px;
+                gap: 14px;
+                bottom: 14px;
+                /* D'Basisregel zentréiert d'Box mat translateX(-50%).
+                   Hei gëtt se awer iwwer left/right positionéiert, dofir
+                   muss dee Verschub ewech. Soss läit d'Halschent vun der
+                   Box nieft dem Schierm an den Akzeptéieren-Knäppchen
+                   ass guer net z'erreechen. */
+                transform: translateY(120%);
+                animation-name: slideUpMobile;
             }
 
             .cookie-content p {
                 font-size: 0.9rem;
+            }
+
+            /* Knäppercher deelen sech d'Breet, a briechen ëm, wa se net passen */
+            .cookie-buttons {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .cookie-btn {
+                flex: 1 1 140px;
+                padding: 13px 18px;
+                min-height: 46px;
             }
         }
 
