@@ -1515,7 +1515,7 @@ a.client-card:hover {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 360px));
+    grid-template-columns: repeat(3, minmax(0, 340px));
     justify-content: center;
     gap: 24px;
 }
