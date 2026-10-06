@@ -1509,14 +1509,14 @@ a.client-card:hover {
     font-weight: 600;
 }
 
-/* SauerBeen a senge Markefaarwen: wäisst Logo op Royalblo */
+/* SauerBeen a de Faarwe vum App-Icon: wäisst Logo op engem Verlaf vu Pink op Royalblo */
 .client-card--sauerbeen {
-    --logo-bg: linear-gradient(160deg, #2b57e0 0%, #1e46c8 55%, #1736a8 100%);
+    --logo-bg: linear-gradient(135deg, #e0336b 0%, #a33a98 30%, #5c45bd 62%, #2d55d4 100%);
 }
 
 .client-card--sauerbeen .tag {
-    background: rgba(30, 70, 200, 0.1);
-    color: #1e46c8;
+    background: linear-gradient(135deg, rgba(224, 51, 107, 0.12), rgba(45, 85, 212, 0.12));
+    color: #4a3ab4;
 }
 
 .client-body .link-arrow {
