@@ -924,14 +924,14 @@ main {
 }
 
 /* Titel Wuert fir Wuert erop */
-/* Polster uewen an ënnen, sou datt Akzenter op Groussbuschtawen (Ä, É, À)
-   an Ënnerlängen net ofgeschnidde ginn; déi negativ Marge hält den
-   Zeilenofstand onverännert */
+/* All Wuert gëtt just ënne geclippt (do kënnt et eran). Uewen a op de
+   Säite bleift alles sichtbar, sou datt d'Akzenter op Groussbuschtawen
+   (Ä, Ë, É, À) an all Browser ganz bleiwen. Polster a negativ Marge
+   ënnen loossen den Ënnerlängen Plaz, ouni den Zeilenofstand z'änneren. */
 .split-words .w {
     display: inline-block;
-    overflow: hidden;
-    padding-top: 0.16em;
-    margin-top: -0.16em;
+    -webkit-clip-path: inset(-0.5em -0.25em 0 -0.25em);
+    clip-path: inset(-0.5em -0.25em 0 -0.25em);
     padding-bottom: 0.1em;
     margin-bottom: -0.1em;
     vertical-align: bottom;
@@ -942,8 +942,9 @@ main {
     font-style: normal;
 }
 
+/* 135 %: och d'Akzenter vun engem verstoppte Wuert leien ënnert der Clip-Kant */
 .js .split-words .w > i {
-    transform: translateY(112%);
+    transform: translateY(135%);
     transition: transform 1s var(--ease);
     transition-delay: calc(var(--i, 0) * 70ms + 120ms);
 }
