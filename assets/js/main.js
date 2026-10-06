@@ -13,15 +13,12 @@
        Dee Link muss ugeklickt ginn, soss kommen d'Ufroen net un.
        ------------------------------------------------------------------ */
     const CONTACT_EMAIL = 'info@nave.lu';
-    const SITE_URL = 'https://nave.lu/';
 
-    // Standardsprooch, wann een d'Säit fir d'éischt opmécht.
-    // De Lëtzebuerger Text steet direkt am HTML, déi aner Sproochen an i18n.js.
+    // Standardsprooch: Lëtzebuergesch op /, déi aner Sproochen op /de/, /fr/, /en/.
     const DEFAULT_LANG = 'lu';
     const LANGS = ['lu', 'de', 'fr', 'en'];
     const HTML_LANG = { lu: 'lb', de: 'de', fr: 'fr', en: 'en' };
     const NUMBER_LOCALE = { lu: 'de-LU', de: 'de-DE', fr: 'fr-LU', en: 'en-GB' };
-    const OG_LOCALE = { lu: 'lb_LU', de: 'de_DE', fr: 'fr_FR', en: 'en_GB' };
 
     // Signal fir de Sécherheetsnetz am <head>: d'Script leeft
     window.NAVE_READY = true;
@@ -43,14 +40,19 @@
 
     /* ==================================================================
        1. SPROOCHEN
+       All Säit gëtt fäerdeg an hirer Sprooch gebaut: / (Lëtzebuergesch),
+       /de/, /fr/, /en/. D'Sprooch vun der Säit steet am <html lang>.
+       D'Sproochmenü verlinkt op déi selwecht Säit an der anerer Sprooch.
+       Nëmmen d'404-Säit (déi et eemol gëtt) gëtt hei am Browser iwwersat:
        data-i18n="key"        -> Text vum Element
        data-i18n-html="key"   -> HTML vum Element (fir <strong>, <a> …)
        data-i18n-attr="attribut:key; attribut2:key2"
-       De Lëtzebuerger Text gëtt beim Lueden aus dem HTML gelies.
        ================================================================== */
 
     const LU = Object.assign({}, I18N.lu || {});
-    let currentLang = DEFAULT_LANG;
+    const DIRS = { lu: '', de: 'de/', fr: 'fr/', en: 'en/' };
+    const IS_404 = body.dataset.path == null;
+    let currentLang = LANGS.find(l => HTML_LANG[l] === root.lang) || DEFAULT_LANG;
 
     function normalise(text) {
         return text.replace(/\s+/g, ' ').trim();
@@ -88,82 +90,36 @@
             .replace(/\{year\}/g, String(new Date().getFullYear()));
     }
 
-    function applyLanguage(lang, save) {
-        if (!LANGS.includes(lang)) lang = DEFAULT_LANG;
+    // Just fir d'404-Säit: Texter an d'Linken op déi aner Säiten an der Sprooch vum Besucher
+    function translate404(lang) {
         currentLang = lang;
         root.lang = HTML_LANG[lang];
-
-        $$('[data-i18n]').forEach(el => {
-            el.textContent = t(el.dataset.i18n);
-            if (el.hasAttribute('data-split')) splitWords(el);
-        });
+        $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
         $$('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
         $$('[data-i18n-attr]').forEach(el => {
             parseAttrMap(el).forEach(([attr, key]) => el.setAttribute(attr, t(key)));
         });
-
-        $$('.lang-list [data-lang]').forEach(btn => {
-            btn.setAttribute('aria-checked', String(btn.dataset.lang === lang));
+        $$('.lang-list [data-lang]').forEach(item => {
+            item.setAttribute('aria-checked', String(item.dataset.lang === lang));
         });
         $$('.lang-current').forEach(el => { el.textContent = lang.toUpperCase(); });
-
-        updateInternalLinks();
-        updateUrlAndCanonical();
-        renderCounters();
-        buildFaqSchema();
-        if (save) store.set('selectedLang', lang);
-
+        $$('a[href^="/"]').forEach(a => {
+            if (a.closest('.lang-list')) return;
+            const href = a.getAttribute('href');
+            if (!/^\/(de|fr|en)\//.test(href)) a.setAttribute('href', '/' + DIRS[lang] + href.slice(1));
+        });
         document.dispatchEvent(new CustomEvent('nave:lang', { detail: { lang } }));
     }
 
-    // Intern Linken kréien ?lang=…, domat d'Sprooch beim Wiessele vun der Säit bleift
-    // (och wann de Browser kee localStorage erlaabt) an Google all Versioun fënnt.
-    function updateInternalLinks() {
-        $$('a[href]').forEach(a => {
-            const href = a.getAttribute('href');
-            if (!href || /^(https?:|mailto:|tel:|#|javascript:)/i.test(href)) return;
-            const match = href.match(/^([^?#]*)(\?[^#]*)?(#.*)?$/);
-            if (!match) return;
-            const path = match[1];
-            if (!(path === './' || path === '/' || /\.html$/.test(path))) return;
-            const params = new URLSearchParams((match[2] || '').slice(1));
-            if (currentLang === DEFAULT_LANG) params.delete('lang');
-            else params.set('lang', currentLang);
-            const query = params.toString();
-            a.setAttribute('href', path + (query ? '?' + query : '') + (match[3] || ''));
-        });
-    }
-
-    function updateUrlAndCanonical() {
-        try {
-            const url = new URL(window.location.href);
-            if (currentLang === DEFAULT_LANG) url.searchParams.delete('lang');
-            else url.searchParams.set('lang', currentLang);
-            if (url.href !== window.location.href) history.replaceState(history.state, '', url.href);
-        } catch (e) { /* z. B. bei file:// */ }
-
-        const path = body.dataset.path;
-        if (path == null) return; // 404-Säit: keng canonical
-        let link = $('link[rel="canonical"]');
-        if (!link) {
-            link = document.createElement('link');
-            link.rel = 'canonical';
-            document.head.appendChild(link);
-        }
-        link.href = SITE_URL + path + (currentLang === DEFAULT_LANG ? '' : '?lang=' + currentLang);
-
-        const ogUrl = $('meta[property="og:url"]');
-        if (ogUrl) ogUrl.setAttribute('content', link.href);
-        const ogLocale = $('meta[property="og:locale"]');
-        if (ogLocale) ogLocale.setAttribute('content', OG_LOCALE[currentLang]);
-    }
-
     function initLanguage() {
-        captureDefaults();
-        const fromUrl = new URLSearchParams(window.location.search).get('lang');
-        const saved = store.get('selectedLang');
-        const lang = LANGS.includes(fromUrl) ? fromUrl : (LANGS.includes(saved) ? saved : DEFAULT_LANG);
-        applyLanguage(lang, LANGS.includes(fromUrl));
+        if (IS_404) {
+            captureDefaults();
+            const saved = store.get('selectedLang');
+            if (LANGS.includes(saved) && saved !== DEFAULT_LANG) translate404(saved);
+        }
+        // Titel an d'Liichttext an eenzel Wierder opdeelen (Animatiounen)
+        $$('[data-split]').forEach(splitWords);
+        renderCounters();
         initLangMenu();
     }
 
@@ -213,14 +169,19 @@
             if (!menu.contains(e.target)) setOpen(false);
         });
 
-        items.forEach(btn => {
-            btn.addEventListener('click', () => {
+        // D'Linken op déi aner Sproochversioune navigéieren selwer; d'Wiel gëtt
+        // gespäichert, fir datt een nächst Kéier direkt an där Sprooch landt
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                store.set('selectedLang', item.dataset.lang);
                 setOpen(false);
-                toggle.focus();
-                if (btn.dataset.lang === currentLang) return;
-                applyLanguage(btn.dataset.lang, true);
-                replayTitles();
-                centerActiveTab(true);
+            });
+            // Menüpunkt (role=menuitemradio): och mat der Espace-Tast
+            item.addEventListener('keydown', e => {
+                if (e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
             });
         });
     }
@@ -269,15 +230,6 @@
             el.appendChild(outer);
             if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
         });
-    }
-
-    function replayTitles() {
-        $$('.split-words.is-in').forEach(el => {
-            el.classList.remove('is-in');
-            void el.offsetWidth;
-            requestAnimationFrame(() => el.classList.add('is-in'));
-        });
-        updateHighlights();
     }
 
     /* ==================================================================
@@ -729,33 +681,7 @@
     }
 
     /* ==================================================================
-       9. FAQ fir Google (strukturéiert Donnéeën an der aktueller Sprooch)
-       ================================================================== */
-    function buildFaqSchema() {
-        const items = $$('[data-faq] details');
-        if (!items.length) return;
-        const data = {
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            inLanguage: HTML_LANG[currentLang],
-            mainEntity: items.map(item => ({
-                '@type': 'Question',
-                name: normalise($('summary', item).textContent),
-                acceptedAnswer: { '@type': 'Answer', text: normalise($('.faq-a', item).textContent) }
-            }))
-        };
-        let script = $('#faq-schema');
-        if (!script) {
-            script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.id = 'faq-schema';
-            document.head.appendChild(script);
-        }
-        script.textContent = JSON.stringify(data);
-    }
-
-    /* ==================================================================
-       10. MICRO-INTERAKTIOUNEN (just mat der Maus)
+       9. MICRO-INTERAKTIOUNEN (just mat der Maus)
        ================================================================== */
     function initPointerEffects() {
         if (!FINE_POINTER || REDUCED) return;
@@ -799,7 +725,7 @@
     }
 
     /* ==================================================================
-       11. RICHTLINNEN (Text op Englesch, wéi bis elo)
+       10. RICHTLINNEN (Text op Englesch, wéi bis elo)
        ================================================================== */
     const POLICIES = {
         cookies: {

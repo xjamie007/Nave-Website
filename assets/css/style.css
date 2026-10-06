@@ -536,24 +536,22 @@ textarea {
     transition: opacity 0.2s ease, transform 0.3s var(--ease), visibility 0s;
 }
 
-.lang-list button {
+.lang-list a {
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
     padding: 10px 12px;
-    border: 0;
     border-radius: 10px;
-    background: none;
     color: var(--text);
     font-size: 0.95rem;
-    text-align: left;
+    text-decoration: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.lang-list button:hover,
-.lang-list button:focus-visible {
+.lang-list a:hover,
+.lang-list a:focus-visible {
     background: var(--bg-soft);
     outline: none;
 }
