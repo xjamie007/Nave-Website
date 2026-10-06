@@ -33,7 +33,7 @@
     --accent: #F9862D;
     --accent-2: #ffb366;
     /* Orange fir klengen Text op hellem Fong: dat helle Orange huet do ze wéineg Kontrast */
-    --accent-ink: #b5530a;
+    --accent-ink: #a64b06;
     --blue: #2f7bf5;
     --lavender: #D1D3EB;
 
@@ -365,7 +365,6 @@ textarea {
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     transition: background-color 0.4s ease;
-    view-transition-name: site-header;
 }
 
 .site-header.is-scrolled {
@@ -533,6 +532,8 @@ textarea {
     opacity: 1;
     visibility: visible;
     transform: none;
+    /* direkt sichtbar, soss kann den Tastatur-Fokus net drop */
+    transition: opacity 0.2s ease, transform 0.3s var(--ease), visibility 0s;
 }
 
 .lang-list button {
@@ -580,29 +581,30 @@ textarea {
     letter-spacing: 0.06em;
 }
 
-/* D'Elementer an der Kopfzeil kommen no dem Intro liicht era */
-.js .site-header .brand,
-.js .main-nav li,
-.js .header-actions > * {
+/* D'Elementer an der Kopfzeil kommen just beim éischte Besuch (no dem Intro)
+   liicht era. Beim Wiessele vun der Säit bleift d'Kopfzeil roueg stoen. */
+.js:not(.intro-seen) .site-header .brand,
+.js:not(.intro-seen) .main-nav li,
+.js:not(.intro-seen) .header-actions > * {
     opacity: 0;
     translate: 0 -8px;
     transition: opacity 0.7s ease, translate 0.8s var(--ease);
 }
 
-.js .is-ready .site-header .brand,
-.js .is-ready .main-nav li,
-.js .is-ready .header-actions > * {
+.js:not(.intro-seen) .is-ready .site-header .brand,
+.js:not(.intro-seen) .is-ready .main-nav li,
+.js:not(.intro-seen) .is-ready .header-actions > * {
     opacity: 1;
     translate: 0 0;
 }
 
-.js .is-ready .main-nav li:nth-child(2) { transition-delay: 0.04s; }
-.js .is-ready .main-nav li:nth-child(3) { transition-delay: 0.08s; }
-.js .is-ready .main-nav li:nth-child(4) { transition-delay: 0.12s; }
-.js .is-ready .main-nav li:nth-child(5) { transition-delay: 0.16s; }
-.js .is-ready .main-nav li:nth-child(6) { transition-delay: 0.2s; }
-.js .is-ready .main-nav li:nth-child(7) { transition-delay: 0.24s; }
-.js .is-ready .header-actions > * { transition-delay: 0.2s; }
+.js:not(.intro-seen) .is-ready .main-nav li:nth-child(2) { transition-delay: 0.04s; }
+.js:not(.intro-seen) .is-ready .main-nav li:nth-child(3) { transition-delay: 0.08s; }
+.js:not(.intro-seen) .is-ready .main-nav li:nth-child(4) { transition-delay: 0.12s; }
+.js:not(.intro-seen) .is-ready .main-nav li:nth-child(5) { transition-delay: 0.16s; }
+.js:not(.intro-seen) .is-ready .main-nav li:nth-child(6) { transition-delay: 0.2s; }
+.js:not(.intro-seen) .is-ready .main-nav li:nth-child(7) { transition-delay: 0.24s; }
+.js:not(.intro-seen) .is-ready .header-actions > * { transition-delay: 0.2s; }
 
 /* ---------- Intro: beim éischte Besuch just d'Logo ---------- */
 
@@ -2622,6 +2624,8 @@ a.contact-item:hover {
 .modal.is-open {
     opacity: 1;
     visibility: visible;
+    /* direkt sichtbar, domat den Tastatur-Fokus sécher an de Modal kënnt */
+    transition: opacity 0.35s ease, visibility 0s;
 }
 
 .modal-panel {
@@ -2722,6 +2726,10 @@ a.contact-item:hover {
 
 .cookie.is-visible {
     transform: translate(-50%, 0);
+}
+
+.has-cookie .footer-bottom {
+    padding-bottom: calc(34px + var(--cookie-h, 0px));
 }
 
 .cookie p {
@@ -2922,27 +2930,6 @@ a.contact-item:hover {
     transform: none;
 }
 
-/* ---------- Iwwergang tëscht de Säiten (Chrome, Edge, Safari) ---------- */
-
-@view-transition {
-    navigation: auto;
-}
-
-::view-transition-old(root) {
-    animation: vtOut 0.3s var(--ease-io) both;
-}
-
-::view-transition-new(root) {
-    animation: vtIn 0.55s var(--ease) both;
-}
-
-@keyframes vtOut {
-    to { opacity: 0; }
-}
-
-@keyframes vtIn {
-    from { opacity: 0; transform: translateY(14px); }
-}
 
 /* ---------- Kleng Hëllefsklassen ---------- */
 
@@ -3441,9 +3428,6 @@ a.req:hover {
         filter: none !important;
     }
 
-    @view-transition {
-        navigation: none;
-    }
 }
 
 /* ---------- Touch-Geräter ---------- */

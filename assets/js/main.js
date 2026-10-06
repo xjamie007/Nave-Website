@@ -178,6 +178,7 @@
             menu.classList.toggle('is-open', open);
             toggle.setAttribute('aria-expanded', String(open));
             if (open && focusItem) {
+                // D'Lëscht gëtt sofort sichtbar (CSS: visibility 0s), dofir geet den Fokus direkt
                 (items.find(i => i.getAttribute('aria-checked') === 'true') || items[0]).focus();
             }
         }
@@ -191,6 +192,8 @@
         });
 
         menu.addEventListener('keydown', e => {
+            // Pfeiltasten um Knäppchen selwer behandelt de Lauschterer uewen
+            if (e.target === toggle && e.key !== 'Escape') return;
             const i = items.indexOf(document.activeElement);
             if (e.key === 'Escape') {
                 setOpen(false);
@@ -217,24 +220,39 @@
                 if (btn.dataset.lang === currentLang) return;
                 applyLanguage(btn.dataset.lang, true);
                 replayTitles();
-                centerActiveTab();
+                centerActiveTab(true);
             });
         });
     }
 
-    /* ---- Säiten-Tabs: déi aktuell Säit an d'Bild scrollen (Handy) ---- */
-    function centerActiveTab() {
+    /* ---- Säiten-Tabs (Handy): d'Positioun bleift beim Wiessele vun der Säit
+       erhalen (gëtt am <head> direkt nom Header nees gesat). Just wann déi
+       aktuell Säit net ganz ze gesinn ass, gëtt se mëll an d'Bild gerréckelt. ---- */
+    function centerActiveTab(smooth) {
         const nav = $('.main-nav');
         const current = $('.main-nav a[aria-current="page"]');
         if (!nav) return;
         const scrollable = nav.scrollWidth > nav.clientWidth + 1;
         nav.classList.toggle('is-scrollable', scrollable);
-        if (scrollable && current) {
-            // getBoundingClientRect: offsetLeft wier relativ zum <li> (wéinst der Animatioun)
-            const n = nav.getBoundingClientRect();
-            const c = current.getBoundingClientRect();
-            nav.scrollLeft += (c.left + c.width / 2) - (n.left + n.width / 2);
-        }
+        if (!scrollable || !current) return;
+        // getBoundingClientRect: offsetLeft wier relativ zum <li>
+        const n = nav.getBoundingClientRect();
+        const c = current.getBoundingClientRect();
+        const margin = 28;
+        if (c.left >= n.left + margin && c.right <= n.right - margin) return;
+        nav.scrollTo({
+            left: nav.scrollLeft + (c.left + c.width / 2) - (n.left + n.width / 2),
+            behavior: smooth === true && !REDUCED ? 'smooth' : 'auto'
+        });
+    }
+
+    function initNavMemory() {
+        const nav = $('.main-nav');
+        if (!nav) return;
+        nav.addEventListener('click', e => {
+            if (!e.target.closest('a')) return;
+            try { sessionStorage.setItem('naveNavX', String(Math.round(nav.scrollLeft))); } catch (err) { /* egal */ }
+        });
     }
 
     /* ---- Wierder an eenzel Spans opdeelen (Titel-Animatioun, Liichttext) ---- */
@@ -533,10 +551,10 @@
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         body.classList.add('modal-open');
-        setTimeout(() => {
-            const first = modal.querySelector('input:not([type="hidden"]):not(.hp-field), select, textarea, button');
-            if (first) first.focus({ preventScroll: true });
-        }, 80);
+        // Éischt Feld vum Formulaire (oder soss den Zoumaache-Knäppchen) fokusséieren
+        const first = modal.querySelector('input:not([type="hidden"]):not(.hp-field), select, textarea') ||
+            modal.querySelector('button');
+        if (first) first.focus({ preventScroll: true });
     }
 
     function closeModal(modal) {
@@ -691,10 +709,21 @@
             banner.remove();
             return;
         }
-        setTimeout(() => banner.classList.add('is-visible'), 1200);
+        // Soulaang de Banner ënnen steet, kritt d'Foussnot esou vill Plaz,
+        // datt d'Linken (Dateschutz asw.) net drënner verschwannen.
+        const reserve = () => body.style.setProperty('--cookie-h', (banner.offsetHeight + 24) + 'px');
+        const ro = 'ResizeObserver' in window ? new ResizeObserver(reserve) : null;
+        setTimeout(() => {
+            banner.classList.add('is-visible');
+            body.classList.add('has-cookie');
+            reserve();
+            if (ro) ro.observe(banner);
+        }, 1200);
         $('[data-cookie-accept]', banner).addEventListener('click', () => {
             store.set('cookiesAccepted', 'true');
             banner.classList.remove('is-visible');
+            body.classList.remove('has-cookie');
+            if (ro) ro.disconnect();
             setTimeout(() => banner.remove(), 900);
         });
     }
@@ -885,10 +914,10 @@
         try {
             $$('[data-year]').forEach(el => { el.textContent = String(new Date().getFullYear()); });
             initLanguage();
-            centerActiveTab();
-            window.addEventListener('resize', centerActiveTab);
-            window.addEventListener('load', centerActiveTab);
-            if (document.fonts && document.fonts.ready) document.fonts.ready.then(centerActiveTab);
+            initNavMemory();
+            centerActiveTab(true);
+            window.addEventListener('resize', () => centerActiveTab(false));
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => centerActiveTab(true));
             initModals();
             initForms();
             initCookie();
