@@ -54,6 +54,7 @@
         </a>
         <nav class="main-nav" aria-label="Haaptnavigatioun" data-i18n-attr="aria-label:a11y.mainnav">
             <ul>
+                <li><a href="./"><span data-i18n="nav.home">Haaptsäit</span></a></li>
                 <li><a href="services.html"><span data-i18n="nav.services">Servicer</span></a></li>
                 <li><a href="sme-package-digital.html"><span data-i18n="nav.sme">SME Package</span><span class="nav-badge" data-i18n="nav.badge">70 %</span></a></li>
                 <li><a href="process.html" aria-current="page"><span data-i18n="nav.process">Prozess</span></a></li>
@@ -63,27 +64,16 @@
             </ul>
         </nav>
         <div class="header-actions">
-            <div class="lang-switch" role="group" aria-label="Sprooch wielen" data-i18n-attr="aria-label:a11y.lang"><button type="button" data-lang="lu" lang="lb" aria-pressed="true" title="Lëtzebuergesch">LU</button><button type="button" data-lang="de" lang="de" aria-pressed="false" title="Deutsch">DE</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" title="Français">FR</button><button type="button" data-lang="en" lang="en" aria-pressed="false" title="English">EN</button></div>
-            <button type="button" class="btn btn-primary btn-sm header-cta" data-open-contact data-i18n="cta.book">Rendez-vous huelen</button>
-            <button type="button" class="menu-toggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü" data-i18n-attr="aria-label:a11y.menu"><span></span><span></span></button>
+            <div class="lang-menu">
+                <button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" aria-label="Sprooch wielen" data-i18n-attr="aria-label:a11y.lang">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-globe"></use></svg><span class="lang-current">LU</span><svg class="icon chev" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-chevron-down"></use></svg>
+                </button>
+                <ul class="lang-list" id="langList" role="menu" aria-label="Sprooch wielen" data-i18n-attr="aria-label:a11y.lang"><li role="none"><button type="button" role="menuitemradio" aria-checked="true" data-lang="lu" lang="lb"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-check"></use></svg><span class="lang-name">Lëtzebuergesch</span><span class="lang-code">LU</span></button></li><li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lang="de" lang="de"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-check"></use></svg><span class="lang-name">Deutsch</span><span class="lang-code">DE</span></button></li><li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lang="fr" lang="fr"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-check"></use></svg><span class="lang-name">Français</span><span class="lang-code">FR</span></button></li><li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lang="en" lang="en"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-check"></use></svg><span class="lang-name">English</span><span class="lang-code">EN</span></button></li></ul>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm header-cta" data-open-contact><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-calendar-check"></use></svg><span data-i18n="cta.book">Rendez-vous huelen</span></button>
         </div>
     </div>
 </header>
-
-<div class="mobile-menu" id="mobileMenu">
-    <nav aria-label="Menü" data-i18n-attr="aria-label:a11y.menu">
-        <ul>
-            <li style="--i:0"><a href="./"><span data-i18n="nav.home">Haaptsäit</span></a></li>
-            <li style="--i:1"><a href="services.html"><span data-i18n="nav.services">Servicer</span></a></li>
-            <li style="--i:2"><a href="sme-package-digital.html"><span><span data-i18n="nav.sme">SME Package</span> <span class="nav-badge" data-i18n="nav.badge">70 %</span></span></a></li>
-            <li style="--i:3"><a href="process.html" aria-current="page"><span data-i18n="nav.process">Prozess</span></a></li>
-            <li style="--i:4"><a href="references.html"><span data-i18n="nav.references">Referenzen</span></a></li>
-            <li style="--i:5"><a href="team.html"><span data-i18n="nav.team">Team</span></a></li>
-            <li style="--i:6"><a href="contact.html"><span data-i18n="nav.contact">Kontakt</span></a></li>
-        </ul>
-    </nav>
-    <button type="button" class="btn btn-primary mobile-menu-cta" data-open-contact data-i18n="cta.book">Rendez-vous huelen</button>
-</div>
 
 <main id="main">
 
@@ -99,7 +89,7 @@
 </section>
 <section class="section section--soft">
     <div class="container">
-        <div class="stack"><article class="stack-card" style="--i:0" data-step="01"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-comments"></use></svg></div><div><span class="stack-num">01</span><h2 data-i18n="proc.1.title">Éischt Gespréich</h2><p data-i18n="proc.1.desc">Mir lauschteren Iech no a verstinn Äre Projet. Schonn an dësem éischte Gespréich bréngen mir eegen Iddien a méiglech Léisungsweeër mat.</p></div></article><article class="stack-card" style="--i:1" data-step="02"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-pen-ruler"></use></svg></div><div><span class="stack-num">02</span><h2 data-i18n="proc.2.title">Konzept a Design</h2><p data-i18n="proc.2.desc">Mir entwéckelen zesummen d’Richtung, d’Design an de Prototyp.</p></div></article><article class="stack-card" style="--i:2" data-step="03"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-code"></use></svg></div><div><span class="stack-num">03</span><h2 data-i18n="proc.3.title">Entwécklung</h2><p data-i18n="proc.3.desc">Duerno gëtt déi eigentlech Léisung entwéckelt. Mir halen Iech um Lafenden, wéi wäit mir sinn.</p></div></article><article class="stack-card" style="--i:3" data-step="04"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-clipboard-check"></use></svg></div><div><span class="stack-num">04</span><h2 data-i18n="proc.4.title">Tester a Lancement</h2><p data-i18n="proc.4.desc">Mir testen alles op Handy, Tablet a Computer. Wann alles passt, gëtt d’Léisung online gestallt.</p></div></article><article class="stack-card" style="--i:4" data-step="05"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow-trend-up"></use></svg></div><div><span class="stack-num">05</span><h2 data-i18n="proc.5.title">Weiderentwécklung</h2><p data-i18n="proc.5.desc">Och nodeem alles online ass, bleiwe mir do. Mir entwéckelen d’Léisung weider a verbesseren se.</p></div></article></div>
+        <div class="stack"><article class="stack-card" style="--i:0" data-step="01"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-comments"></use></svg></div><div><span class="stack-num">01</span><h2 data-i18n="proc.1.title">Éischt Gespréich</h2><p data-i18n="proc.1.desc">Mir lauschteren Iech no a verstinn Äre Projet. Schonn an dësem éischte Gespréich brénge mir eegen Iddien a méiglech Léisungsweeër mat.</p></div></article><article class="stack-card" style="--i:1" data-step="02"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-pen-ruler"></use></svg></div><div><span class="stack-num">02</span><h2 data-i18n="proc.2.title">Konzept a Design</h2><p data-i18n="proc.2.desc">Mir entwéckelen zesummen d’Richtung, d’Design an de Prototyp.</p></div></article><article class="stack-card" style="--i:2" data-step="03"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-code"></use></svg></div><div><span class="stack-num">03</span><h2 data-i18n="proc.3.title">Entwécklung</h2><p data-i18n="proc.3.desc">Duerno gëtt déi eigentlech Léisung entwéckelt. Mir halen Iech um Lafenden, wéi wäit mir sinn.</p></div></article><article class="stack-card" style="--i:3" data-step="04"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-clipboard-check"></use></svg></div><div><span class="stack-num">04</span><h2 data-i18n="proc.4.title">Tester a Lancement</h2><p data-i18n="proc.4.desc">Mir testen alles op Handy, Tablett a Computer. Wann alles passt, gëtt d’Léisung online gestallt.</p></div></article><article class="stack-card" style="--i:4" data-step="05"><div class="stack-visual" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow-trend-up"></use></svg></div><div><span class="stack-num">05</span><h2 data-i18n="proc.5.title">Weiderentwécklung</h2><p data-i18n="proc.5.desc">Och nodeem alles online ass, bleiwe mir do. Mir entwéckelen d’Léisung weider a verbessere se.</p></div></article></div>
     </div>
 </section>
 
@@ -126,7 +116,7 @@
     <div class="footer-main">
         <div class="footer-brand">
             <img src="assets/img/nave-logo.webp" alt="Nave" width="128" height="50" loading="lazy">
-            <p data-i18n="footer.about">Nave entwéckelt Websäiten, Online-Shops, Applikatiounen a KI-Agenten fir Betriber zu Lëtzebuerg – vun Diekirch aus fir dat ganzt Land.</p>
+            <p data-i18n="footer.about">Nave entwéckelt Websäiten, Online-Shoppen, Applikatiounen a KI-Agente fir Betriber zu Lëtzebuerg – vun Diekirch aus fir dat ganzt Land.</p>
         </div>
         <div class="footer-col">
             <h2 data-i18n="footer.nav">Navigatioun</h2>
@@ -134,7 +124,7 @@
         </div>
         <div class="footer-col">
             <h2 data-i18n="footer.services">Servicer</h2>
-            <ul><li><a href="services.html#websites"><span data-i18n="svc.web.short">Websäiten &amp; Online-Shops</span></a></li><li><a href="services.html#apps"><span data-i18n="svc.app.short">Applikatiounen</span></a></li><li><a href="services.html#ai"><span data-i18n="svc.ai.short">KI-Agenten</span></a></li><li><a href="sme-package-digital.html"><span data-i18n="form.topic.sme">SME Package – Digital</span></a></li></ul>
+            <ul><li><a href="services.html#websites"><span data-i18n="svc.web.short">Websäiten &amp; Online-Shoppen</span></a></li><li><a href="services.html#apps"><span data-i18n="svc.app.short">Applikatiounen</span></a></li><li><a href="services.html#ai"><span data-i18n="svc.ai.short">KI-Agenten</span></a></li><li><a href="sme-package-digital.html"><span data-i18n="form.topic.sme">SME Package – Digital</span></a></li></ul>
         </div>
         <div class="footer-col">
             <h2 data-i18n="footer.contact">Kontakt</h2>
@@ -158,7 +148,7 @@
 <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="modal-panel">
         <div class="modal-head"><h2 class="h3" id="contactModalTitle" data-i18n="cta.book">Rendez-vous huelen</h2><button type="button" class="modal-close" data-close aria-label="Zoumaachen" data-i18n-attr="aria-label:a11y.close">&times;</button></div>
-        <p class="modal-intro" data-i18n="form.intro">Schreiwt eis kuerz, ëm wat et geet. Mir mellen eis bannent 24 Stonnen.</p>
+        <p class="modal-intro" data-i18n="form.intro">Schreift eis kuerz, ëm wat et geet. Mir mellen eis bannent 24 Stonnen.</p>
         <form class="contact-form" data-contact-form novalidate>
     <div class="field-row"><div class="field"><label for="m-firstName" data-i18n="form.firstName">Virnumm</label><input id="m-firstName" name="firstName" type="text" autocomplete="given-name" required></div><div class="field"><label for="m-lastName" data-i18n="form.lastName">Numm</label><input id="m-lastName" name="lastName" type="text" autocomplete="family-name" required></div></div>
     <div class="field-row"><div class="field"><label for="m-email" data-i18n="form.email">E-Mail</label><input id="m-email" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="m-phone" data-i18n="form.phone">Telefonsnummer</label><input id="m-phone" name="phone" type="tel" autocomplete="tel" required></div></div>

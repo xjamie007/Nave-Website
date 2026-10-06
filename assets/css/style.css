@@ -350,14 +350,17 @@ textarea {
     color: var(--accent);
 }
 
-/* ---------- Kopfzeil ---------- */
+/* ---------- Kopfzeil ----------
+   Grouss Schiirmer: Logo | all Säiten | Sprooch + Rendez-vous op enger Zeil.
+   Ënner 1240px: zweet Zeil mat de Säiten als Tabs (op dem Handy scrollbar),
+   domat een ëmmer gesäit, wéi eng Säiten et gëtt an op wéi enger een ass. */
 
 .site-header {
     position: fixed;
     inset: 0 0 auto;
     z-index: 100;
     height: var(--header-h);
-    background: rgba(9, 0, 64, 0.72);
+    background: rgba(9, 0, 64, 0.78);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -365,22 +368,23 @@ textarea {
     view-transition-name: site-header;
 }
 
-.site-header.is-scrolled,
-.menu-open .site-header {
-    background: rgba(9, 0, 64, 0.88);
+.site-header.is-scrolled {
+    background: rgba(9, 0, 64, 0.9);
 }
 
 .header-inner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "brand nav actions";
+    align-items: center;
+    column-gap: 22px;
     height: 100%;
     width: min(100% - 2 * var(--gutter), 1320px);
     margin-inline: auto;
-    display: flex;
-    align-items: center;
-    gap: 24px;
 }
 
 .brand {
-    flex: 0 0 auto;
+    grid-area: brand;
     display: flex;
     align-items: center;
     border-radius: 8px;
@@ -392,61 +396,51 @@ textarea {
 }
 
 .main-nav {
-    flex: 1 1 auto;
+    grid-area: nav;
+    position: relative;
     display: flex;
-    justify-content: center;
     min-width: 0;
 }
 
 .main-nav ul {
     display: flex;
     align-items: center;
-    gap: clamp(16px, 1.9vw, 30px);
-    list-style: none;
-    margin: 0;
+    gap: 2px;
+    width: max-content;
+    margin: 0 auto;
     padding: 0;
+    list-style: none;
 }
 
 .main-nav a {
-    position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 8px 0;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.95rem;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.92rem;
     font-weight: 500;
+    line-height: 1.2;
     text-decoration: none;
     white-space: nowrap;
-    transition: color 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 1px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.45s var(--ease);
-}
-
-.main-nav a:hover,
-.main-nav a[aria-current="page"] {
+.main-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
 
-.main-nav a:hover::after,
-.main-nav a[aria-current="page"]::after {
-    transform: scaleX(1);
+/* Déi aktuell Säit: wäisse Pill, gutt ze gesinn */
+.main-nav a[aria-current="page"] {
+    background: #fff;
+    color: var(--navy);
+    font-weight: 600;
 }
 
 .nav-badge {
     display: inline-block;
-    margin-left: 7px;
     padding: 2px 7px;
     border-radius: 999px;
     background: var(--accent);
@@ -457,81 +451,133 @@ textarea {
 }
 
 .header-actions {
-    flex: 0 0 auto;
+    grid-area: actions;
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-left: auto;
-}
-
-.lang-switch {
-    display: flex;
-    padding: 3px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.09);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-}
-
-.lang-switch button {
-    min-width: 34px;
-    padding: 6px 8px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.lang-switch button:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.lang-switch button[aria-pressed="true"] {
-    background: var(--accent);
-    color: var(--navy);
+    justify-content: flex-end;
+    gap: 12px;
 }
 
 .header-cta {
     white-space: nowrap;
 }
 
-.menu-toggle {
+.header-cta .icon {
     display: none;
+}
+
+/* ---------- Sproochwiessel: klengen Menü amplaz véier Knäppercher ---------- */
+
+.lang-menu {
     position: relative;
-    width: 44px;
-    height: 44px;
-    margin-right: -10px;
+}
+
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 38px;
+    padding: 0 12px;
     border: 0;
-    background: transparent;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     cursor: pointer;
+    transition: background-color 0.25s ease;
 }
 
-.menu-toggle span {
+.lang-toggle:hover,
+.lang-toggle[aria-expanded="true"] {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.lang-toggle .icon {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.lang-toggle .chev {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    transition: rotate 0.3s var(--ease);
+}
+
+.lang-toggle[aria-expanded="true"] .chev {
+    rotate: 180deg;
+}
+
+.lang-list {
     position: absolute;
-    left: 12px;
-    right: 12px;
-    height: 2px;
-    border-radius: 2px;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 120;
+    min-width: 220px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    border-radius: 16px;
     background: #fff;
-    transition: transform 0.45s var(--ease), top 0.45s var(--ease);
+    box-shadow: 0 18px 50px rgba(9, 0, 64, 0.28), 0 0 0 1px rgba(9, 0, 64, 0.06);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity 0.2s ease, transform 0.3s var(--ease), visibility 0.2s;
 }
 
-.menu-toggle span:nth-child(1) { top: 17px; }
-.menu-toggle span:nth-child(2) { top: 25px; }
-
-.menu-open .menu-toggle span:nth-child(1) {
-    top: 21px;
-    transform: rotate(45deg);
+.lang-menu.is-open .lang-list {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
 }
 
-.menu-open .menu-toggle span:nth-child(2) {
-    top: 21px;
-    transform: rotate(-45deg);
+.lang-list button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 10px;
+    background: none;
+    color: var(--text);
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.lang-list button:hover,
+.lang-list button:focus-visible {
+    background: var(--bg-soft);
+    outline: none;
+}
+
+.lang-list .icon {
+    font-size: 0.8rem;
+    color: var(--accent-ink);
+    visibility: hidden;
+}
+
+.lang-list [aria-checked="true"] {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.lang-list [aria-checked="true"] .icon {
+    visibility: visible;
+}
+
+.lang-code {
+    margin-left: auto;
+    color: var(--text-2);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
 }
 
 /* D'Elementer an der Kopfzeil kommen no dem Intro liicht era */
@@ -550,91 +596,13 @@ textarea {
     translate: 0 0;
 }
 
-.js .is-ready .main-nav li:nth-child(2) { transition-delay: 0.05s; }
-.js .is-ready .main-nav li:nth-child(3) { transition-delay: 0.1s; }
-.js .is-ready .main-nav li:nth-child(4) { transition-delay: 0.15s; }
-.js .is-ready .main-nav li:nth-child(5) { transition-delay: 0.2s; }
-.js .is-ready .main-nav li:nth-child(6) { transition-delay: 0.25s; }
+.js .is-ready .main-nav li:nth-child(2) { transition-delay: 0.04s; }
+.js .is-ready .main-nav li:nth-child(3) { transition-delay: 0.08s; }
+.js .is-ready .main-nav li:nth-child(4) { transition-delay: 0.12s; }
+.js .is-ready .main-nav li:nth-child(5) { transition-delay: 0.16s; }
+.js .is-ready .main-nav li:nth-child(6) { transition-delay: 0.2s; }
+.js .is-ready .main-nav li:nth-child(7) { transition-delay: 0.24s; }
 .js .is-ready .header-actions > * { transition-delay: 0.2s; }
-
-/* ---------- Vollbild-Menü (Handy an Tablet) ---------- */
-
-.mobile-menu {
-    position: fixed;
-    inset: 0;
-    z-index: 90;
-    display: flex;
-    flex-direction: column;
-    padding: calc(var(--header-h) + 20px) var(--gutter) 40px;
-    overflow-y: auto;
-    background: rgba(9, 0, 64, 0.97);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s var(--ease), visibility 0.4s;
-}
-
-.menu-open .mobile-menu {
-    opacity: 1;
-    visibility: visible;
-}
-
-.menu-open {
-    overflow: hidden;
-}
-
-.mobile-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.mobile-menu li {
-    opacity: 0;
-    translate: 0 18px;
-    transition: opacity 0.5s var(--ease), translate 0.6s var(--ease);
-    transition-delay: calc(var(--i, 0) * 45ms);
-}
-
-.menu-open .mobile-menu li {
-    opacity: 1;
-    translate: 0 0;
-}
-
-.mobile-menu a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #fff;
-    font-size: clamp(1.6rem, 6.5vw, 2.3rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    text-decoration: none;
-}
-
-.mobile-menu a::after {
-    content: '\203A';
-    color: rgba(255, 255, 255, 0.35);
-    font-weight: 400;
-}
-
-.mobile-menu a[aria-current="page"] {
-    color: var(--accent);
-}
-
-.mobile-menu .nav-badge {
-    font-size: 0.8rem;
-    vertical-align: middle;
-}
-
-.mobile-menu-cta {
-    margin-top: 30px;
-    align-self: flex-start;
-}
 
 /* ---------- Intro: beim éischte Besuch just d'Logo ---------- */
 
@@ -736,21 +704,29 @@ textarea {
     opacity: 1;
 }
 
-.cursor-on,
+/* De Punkt ersetzt de Mauszeiger just op fräie Flächen. Iwwer Linken a
+   Knäppercher gëtt et déi normal Hand, ouni Krees ronderëm de Knäppchen. */
+.cursor-on {
+    cursor: none;
+}
+
 .cursor-on a,
 .cursor-on button,
 .cursor-on summary,
 .cursor-on label,
-.cursor-on .tile {
-    cursor: none;
+.cursor-on select,
+.cursor-on .tile,
+.cursor-on input[type="range"] {
+    cursor: pointer;
+}
+
+.cursor-on input,
+.cursor-on textarea {
+    cursor: text;
 }
 
 .cursor-hover .cursor-dot {
-    width: 36px;
-    height: 36px;
-    margin: -18px 0 0 -18px;
-    background: rgba(249, 134, 45, 0.22);
-    box-shadow: inset 0 0 0 1.5px var(--accent);
+    opacity: 0;
 }
 
 /* ---------- Sektiounen ---------- */
@@ -2031,23 +2007,23 @@ a.client-card:hover {
 }
 
 .calc input[type="range"]::-webkit-slider-thumb {
-    width: 30px;
-    height: 30px;
-    border: 0;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--accent);
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 2px 10px rgba(9, 0, 64, 0.3), 0 0 0 1px rgba(9, 0, 64, 0.08);
+    box-shadow: 0 2px 8px rgba(9, 0, 64, 0.25);
     -webkit-appearance: none;
     appearance: none;
 }
 
 .calc input[type="range"]::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
-    border: 0;
+    width: 16px;
+    height: 16px;
+    border: 3px solid var(--accent);
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 2px 10px rgba(9, 0, 64, 0.3);
+    box-shadow: 0 2px 8px rgba(9, 0, 64, 0.25);
 }
 
 .calc-scale {
@@ -3109,39 +3085,63 @@ a.req:hover {
    Responsive
    ================================================================== */
 
-@media (max-width: 1240px) {
+@media (max-width: 1380px) and (min-width: 1240px) {
     .header-inner {
-        gap: 18px;
-    }
-
-    .main-nav ul {
-        gap: 18px;
+        column-gap: 16px;
     }
 
     .main-nav a {
-        font-size: 0.9rem;
+        padding: 8px 10px;
+        font-size: 0.88rem;
     }
 }
 
-/* Ab hei gëtt d'Navigatioun an d'Vollbild-Menü geréckelt */
-@media (max-width: 1140px) {
+/* Ab hei kommen d'Säiten op eng zweet Zeil */
+@media (max-width: 1239px) {
+    :root {
+        --header-row: 60px;
+        --nav-row: 48px;
+        --header-h: calc(var(--header-row) + var(--nav-row));
+    }
+
+    .header-inner {
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-rows: var(--header-row) var(--nav-row);
+        grid-template-areas:
+            "brand actions"
+            "nav nav";
+        width: 100%;
+        padding-inline: var(--gutter);
+    }
+
     .main-nav {
+        margin-inline: calc(var(--gutter) * -1);
+        padding-inline: var(--gutter);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        overflow-x: auto;
+        scrollbar-width: none;
+        align-self: stretch;
+        align-items: center;
+    }
+
+    .main-nav::-webkit-scrollbar {
         display: none;
     }
 
-    .menu-toggle {
-        display: block;
+    /* Wann d'Tabs net all op de Schierm passen: Kanten liicht ausblenden */
+    .main-nav.is-scrollable {
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 22px), transparent);
+        mask-image: linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 22px), transparent);
+    }
+
+    .main-nav a {
+        padding: 7px 12px;
+        font-size: 0.88rem;
     }
 
     .why-grid,
     .why-grid--3 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1141px) {
-    .mobile-menu {
-        display: none;
     }
 }
 
@@ -3230,19 +3230,39 @@ a.req:hover {
 
 @media (max-width: 700px) {
     :root {
-        --header-h: 62px;
-    }
-
-    .header-cta {
-        display: none;
+        --header-row: 56px;
+        --nav-row: 46px;
     }
 
     .header-actions {
-        gap: 10px;
+        gap: 8px;
     }
 
     .brand img {
         height: 38px;
+    }
+
+    /* Rendez-vous-Knäppchen gëtt e klengen Icon-Knäppchen */
+    .header-cta {
+        width: 36px;
+        min-height: 36px;
+        height: 36px;
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    .header-cta .icon {
+        display: block;
+        font-size: 1rem;
+    }
+
+    .header-cta [data-i18n] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
     }
 
     .bento {
@@ -3358,14 +3378,9 @@ a.req:hover {
         height: 34px;
     }
 
-    .lang-switch button {
-        min-width: 30px;
-        padding: 5px 6px;
-        font-size: 0.68rem;
-    }
-
-    .header-actions {
-        gap: 6px;
+    .lang-toggle {
+        gap: 5px;
+        padding: 0 10px;
     }
 
     .stats {

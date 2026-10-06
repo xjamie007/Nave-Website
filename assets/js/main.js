@@ -102,9 +102,10 @@
             parseAttrMap(el).forEach(([attr, key]) => el.setAttribute(attr, t(key)));
         });
 
-        $$('.lang-switch button').forEach(btn => {
-            btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+        $$('.lang-list [data-lang]').forEach(btn => {
+            btn.setAttribute('aria-checked', String(btn.dataset.lang === lang));
         });
+        $$('.lang-current').forEach(el => { el.textContent = lang.toUpperCase(); });
 
         updateInternalLinks();
         updateUrlAndCanonical();
@@ -163,14 +164,77 @@
         const saved = store.get('selectedLang');
         const lang = LANGS.includes(fromUrl) ? fromUrl : (LANGS.includes(saved) ? saved : DEFAULT_LANG);
         applyLanguage(lang, LANGS.includes(fromUrl));
+        initLangMenu();
+    }
 
-        $$('.lang-switch button').forEach(btn => {
+    /* ---- Sproochmenü an der Kopfzeil ---- */
+    function initLangMenu() {
+        const menu = $('.lang-menu');
+        if (!menu) return;
+        const toggle = $('.lang-toggle', menu);
+        const items = $$('[data-lang]', menu);
+
+        function setOpen(open, focusItem) {
+            menu.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            if (open && focusItem) {
+                (items.find(i => i.getAttribute('aria-checked') === 'true') || items[0]).focus();
+            }
+        }
+
+        toggle.addEventListener('click', () => setOpen(!menu.classList.contains('is-open'), false));
+        toggle.addEventListener('keydown', e => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                setOpen(true, true);
+            }
+        });
+
+        menu.addEventListener('keydown', e => {
+            const i = items.indexOf(document.activeElement);
+            if (e.key === 'Escape') {
+                setOpen(false);
+                toggle.focus();
+            } else if (e.key === 'ArrowDown' && i > -1) {
+                e.preventDefault();
+                items[(i + 1) % items.length].focus();
+            } else if (e.key === 'ArrowUp' && i > -1) {
+                e.preventDefault();
+                items[(i - 1 + items.length) % items.length].focus();
+            } else if (e.key === 'Tab') {
+                setOpen(false);
+            }
+        });
+
+        document.addEventListener('click', e => {
+            if (!menu.contains(e.target)) setOpen(false);
+        });
+
+        items.forEach(btn => {
             btn.addEventListener('click', () => {
+                setOpen(false);
+                toggle.focus();
                 if (btn.dataset.lang === currentLang) return;
                 applyLanguage(btn.dataset.lang, true);
                 replayTitles();
+                centerActiveTab();
             });
         });
+    }
+
+    /* ---- Säiten-Tabs: déi aktuell Säit an d'Bild scrollen (Handy) ---- */
+    function centerActiveTab() {
+        const nav = $('.main-nav');
+        const current = $('.main-nav a[aria-current="page"]');
+        if (!nav) return;
+        const scrollable = nav.scrollWidth > nav.clientWidth + 1;
+        nav.classList.toggle('is-scrollable', scrollable);
+        if (scrollable && current) {
+            // getBoundingClientRect: offsetLeft wier relativ zum <li> (wéinst der Animatioun)
+            const n = nav.getBoundingClientRect();
+            const c = current.getBoundingClientRect();
+            nav.scrollLeft += (c.left + c.width / 2) - (n.left + n.width / 2);
+        }
     }
 
     /* ---- Wierder an eenzel Spans opdeelen (Titel-Animatioun, Liichttext) ---- */
@@ -459,37 +523,7 @@
     }
 
     /* ==================================================================
-       6. MENÜ (Handy an Tablet)
-       ================================================================== */
-    function initMenu() {
-        const toggle = $('.menu-toggle');
-        const menu = $('#mobileMenu');
-        if (!toggle || !menu) return;
-
-        function setMenu(open) {
-            body.classList.toggle('menu-open', open);
-            toggle.setAttribute('aria-expanded', String(open));
-            menu.setAttribute('aria-hidden', String(!open));
-            if ('inert' in menu) menu.inert = !open;
-        }
-
-        setMenu(false);
-        toggle.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
-        menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && body.classList.contains('menu-open')) {
-                setMenu(false);
-                toggle.focus();
-            }
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 1140 && body.classList.contains('menu-open')) setMenu(false);
-        });
-        window.NAVE_closeMenu = () => setMenu(false);
-    }
-
-    /* ==================================================================
-       7. MODALEN (Kontakt, Richtlinnen)
+       6. MODALEN (Kontakt, Richtlinnen)
        ================================================================== */
     let lastFocus = null;
 
@@ -540,7 +574,6 @@
             const opener = e.target.closest('[data-open-contact]');
             if (!opener) return;
             e.preventDefault();
-            if (window.NAVE_closeMenu) window.NAVE_closeMenu();
 
             const topic = opener.dataset.topic;
             const inlineForm = $('#contactForm');
@@ -558,7 +591,7 @@
 
             const modal = $('#contactModal');
             if (topic) setTopic($('form', modal), topic);
-            setTimeout(() => openModal(modal, opener), body.classList.contains('menu-open') ? 220 : 0);
+            openModal(modal, opener);
         });
 
         // Richtlinnen
@@ -581,7 +614,7 @@
     }
 
     /* ==================================================================
-       8. FORMULAIRE (FormSubmit)
+       7. FORMULAIRE (FormSubmit)
        ================================================================== */
     function initForms() {
         $$('form[data-contact-form]').forEach(form => {
@@ -649,7 +682,7 @@
     }
 
     /* ==================================================================
-       9. COOKIE-BANNER
+       8. COOKIE-BANNER
        ================================================================== */
     function initCookie() {
         const banner = $('.cookie');
@@ -667,7 +700,7 @@
     }
 
     /* ==================================================================
-       10. FAQ fir Google (strukturéiert Donnéeën an der aktueller Sprooch)
+       9. FAQ fir Google (strukturéiert Donnéeën an der aktueller Sprooch)
        ================================================================== */
     function buildFaqSchema() {
         const items = $$('[data-faq] details');
@@ -693,7 +726,7 @@
     }
 
     /* ==================================================================
-       11. MICRO-INTERAKTIOUNEN (just mat der Maus)
+       10. MICRO-INTERAKTIOUNEN (just mat der Maus)
        ================================================================== */
     function initPointerEffects() {
         if (!FINE_POINTER || REDUCED) return;
@@ -725,7 +758,7 @@
             dot.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
             if (e.pointerType === 'mouse') body.classList.add('cursor-on');
         }, { passive: true });
-        const hoverSel = 'a, button, summary, label, .tile, input[type="range"]';
+        const hoverSel = 'a, button, summary, label, select, input, textarea, .tile';
         document.addEventListener('pointerover', e => {
             if (e.target.closest(hoverSel)) body.classList.add('cursor-hover');
         });
@@ -737,7 +770,7 @@
     }
 
     /* ==================================================================
-       12. RICHTLINNEN (Text op Englesch, wéi bis elo)
+       11. RICHTLINNEN (Text op Englesch, wéi bis elo)
        ================================================================== */
     const POLICIES = {
         cookies: {
@@ -852,7 +885,10 @@
         try {
             $$('[data-year]').forEach(el => { el.textContent = String(new Date().getFullYear()); });
             initLanguage();
-            initMenu();
+            centerActiveTab();
+            window.addEventListener('resize', centerActiveTab);
+            window.addEventListener('load', centerActiveTab);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(centerActiveTab);
             initModals();
             initForms();
             initCookie();
