@@ -1,5 +1,5 @@
 /* ==================================================================
-   NAVE – Script fir all Säiten
+   NAVE: Script fir all Säiten
    Sproochen, Animatiounen, Menü, Formulairen a Modalen.
    ================================================================== */
 (function () {
@@ -12,7 +12,7 @@
        FormSubmit schéckt dann eng Aktivéierungsmail op déi nei Adress.
        Dee Link muss ugeklickt ginn, soss kommen d'Ufroen net un.
        ------------------------------------------------------------------ */
-    const CONTACT_EMAIL = 'nave.advisory@gmail.com';
+    const CONTACT_EMAIL = 'info@nave.lu';
     const SITE_URL = 'https://nave.lu/';
 
     // Standardsprooch, wann een d'Säit fir d'éischt opmécht.
@@ -797,7 +797,7 @@
                 <h3>7. Contact Us</h3>
                 <p>If you have any questions about this Cookies Policy or how we use cookies, please contact us at:</p>
                 <p>Nave</p>
-                <p>Email: nave.advisory@gmail.com</p>
+                <p>Email: info@nave.lu</p>
                 <p>Website: nave.lu</p>`
         },
         terms: {
@@ -830,7 +830,7 @@
                 <h3>11. Contact Information</h3>
                 <p>If you have any questions about these Terms of Use, please contact us at:</p>
                 <p>Nave</p>
-                <p>Email: nave.advisory@gmail.com</p>
+                <p>Email: info@nave.lu</p>
                 <p>Website: nave.lu</p>`
         },
         privacy: {
@@ -873,7 +873,7 @@
                 <h3>10. Contact Us</h3>
                 <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
                 <p>Nave</p>
-                <p>Email: nave.advisory@gmail.com</p>
+                <p>Email: info@nave.lu</p>
                 <p>Website: nave.lu</p>`
         }
     };

@@ -1507,6 +1507,16 @@ a.client-card:hover {
     font-weight: 600;
 }
 
+/* SauerBeen a senge Markefaarwen: wäisst Logo op Royalblo */
+.client-card--sauerbeen {
+    --logo-bg: linear-gradient(160deg, #2b57e0 0%, #1e46c8 55%, #1736a8 100%);
+}
+
+.client-card--sauerbeen .tag {
+    background: rgba(30, 70, 200, 0.1);
+    color: #1e46c8;
+}
+
 .client-body .link-arrow {
     margin-top: 6px;
 }
