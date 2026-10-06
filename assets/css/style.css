@@ -924,9 +924,14 @@ main {
 }
 
 /* Titel Wuert fir Wuert erop */
+/* Polster uewen an ënnen, sou datt Akzenter op Groussbuschtawen (Ä, É, À)
+   an Ënnerlängen net ofgeschnidde ginn; déi negativ Marge hält den
+   Zeilenofstand onverännert */
 .split-words .w {
     display: inline-block;
     overflow: hidden;
+    padding-top: 0.16em;
+    margin-top: -0.16em;
     padding-bottom: 0.1em;
     margin-bottom: -0.1em;
     vertical-align: bottom;
