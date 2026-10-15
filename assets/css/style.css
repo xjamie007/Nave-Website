@@ -84,7 +84,8 @@ body {
     font-size: 1.0625rem;
     line-height: 1.55;
     color: var(--text);
-    background: var(--bg);
+    /* Donkelblo, domat Safari d'Adressbar an d'Leeschten uewen an ënnen donkelblo fierft */
+    background: var(--navy);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* 'clip' amplaz 'hidden': soss funktionéiert position: sticky net méi */
@@ -735,6 +736,7 @@ textarea {
 
 main {
     display: block;
+    background: var(--bg);
 }
 
 .section {
@@ -3278,8 +3280,28 @@ a.req:hover {
     }
 
     /* Safari fierft d'Adressbar no der Kopfzeil, dofir net duerchsichteg */
-    .site-header {
+    .site-header,
+    .site-header.is-scrolled {
         background: var(--navy);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    /* Startsäit um Handy: just Iwwerschrëften, keng Erklärtexter drënner */
+    [data-page="home"] .hero-sub,
+    [data-page="home"] .section-head .lead,
+    [data-page="home"] .tile p,
+    [data-page="home"] .step-mini p {
+        display: none;
+    }
+
+    [data-page="home"] .step-mini .num {
+        grid-row: auto;
+    }
+
+    [data-page="home"] .step-mini h3 {
+        align-self: center;
+        padding-top: 0;
     }
 
     /* Servicer, Clienten, Team & Co. ëmmer zwee nebeneneen */
