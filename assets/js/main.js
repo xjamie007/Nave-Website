@@ -695,17 +695,6 @@
             });
         });
 
-        // Magnetesch Knäppercher
-        $$('.btn-primary').forEach(btn => {
-            btn.addEventListener('pointermove', e => {
-                const r = btn.getBoundingClientRect();
-                const dx = (e.clientX - (r.left + r.width / 2)) * 0.22;
-                const dy = (e.clientY - (r.top + r.height / 2)) * 0.3;
-                btn.style.translate = dx.toFixed(1) + 'px ' + (dy - 2).toFixed(1) + 'px';
-            });
-            btn.addEventListener('pointerleave', () => { btn.style.translate = ''; });
-        });
-
         // Eegene Cursor
         const dot = $('.cursor-dot');
         if (!dot) return;
@@ -784,49 +773,6 @@
                 <p>These Terms of Use are governed by and construed in accordance with the laws of Luxembourg. Any disputes arising from or related to the Site will be subject to the exclusive jurisdiction of the courts of Luxembourg.</p>
                 <h3>11. Contact Information</h3>
                 <p>If you have any questions about these Terms of Use, please contact us at:</p>
-                <p>Nave</p>
-                <p>Email: info@nave.lu</p>
-                <p>Website: nave.lu</p>`
-        },
-        privacy: {
-            title: 'Privacy Policy',
-            content: `
-                <p><strong>Effective Date: October 21, 2025</strong></p>
-                <h3>1. Introduction</h3>
-                <p>This Privacy Policy explains how Nave ("we," "our," or "us") collects, uses, and protects your personal information when you visit our website nave.lu ("Site"). By using our Site, you consent to the practices described in this policy.</p>
-                <h3>2. Information We Collect</h3>
-                <p>We collect personal information that you provide to us directly when you use the Site. This may include:</p>
-                <p>Contact Information: Name, email address, and other communication details.</p>
-                <p>Account Information: If you create an account, we may collect your username, password, and other account-related information.</p>
-                <p>Usage Information: Information about how you use the Site, such as browsing activity, IP address, and device information.</p>
-                <h3>3. How We Use Your Information</h3>
-                <p>We use the information we collect for the following purposes:</p>
-                <p>To provide and improve our services, including personalized experiences.</p>
-                <p>To communicate with you, respond to your inquiries, and provide customer support.</p>
-                <p>To send you promotional materials, updates, and other communications related to our services (with your consent, if required).</p>
-                <p>To monitor and analyze usage trends to improve our Site's functionality.</p>
-                <h3>4. How We Protect Your Information</h3>
-                <p>We take reasonable measures to protect your personal information from unauthorized access, disclosure, or alteration. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
-                <h3>5. Sharing Your Information</h3>
-                <p>We do not sell, rent, or trade your personal information to third parties. We may share your information in the following situations:</p>
-                <p>Service Providers: We may share your information with third-party vendors or service providers who assist us in operating the Site and delivering services to you.</p>
-                <p>Legal Requirements: We may disclose your information if required by law, such as to comply with a subpoena, legal process, or government request.</p>
-                <p>Business Transfers: If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</p>
-                <h3>6. Your Rights</h3>
-                <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
-                <p>The right to access and review the information we hold about you.</p>
-                <p>The right to correct any inaccuracies in your information.</p>
-                <p>The right to request the deletion of your information (subject to certain exceptions).</p>
-                <p>The right to withdraw consent to any processing of your personal information, where applicable.</p>
-                <p>If you would like to exercise any of these rights, please contact us using the information provided below.</p>
-                <h3>7. Cookies</h3>
-                <p>We use cookies and similar technologies to enhance your experience on the Site. For more details, please refer to our Cookies Policy.</p>
-                <h3>8. Third-Party Links</h3>
-                <p>The Site may contain links to third-party websites. We are not responsible for the privacy practices or the content of those websites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
-                <h3>9. Changes to This Privacy Policy</h3>
-                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the "Effective Date" will be revised accordingly. We recommend that you review this policy periodically to stay informed about how we are protecting your personal information.</p>
-                <h3>10. Contact Us</h3>
-                <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
                 <p>Nave</p>
                 <p>Email: info@nave.lu</p>
                 <p>Website: nave.lu</p>`

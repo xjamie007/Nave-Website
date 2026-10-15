@@ -70,6 +70,7 @@
 }
 
 html {
+    background: var(--navy);
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
@@ -283,6 +284,7 @@ textarea {
 }
 
 .btn-primary:hover {
+    translate: 0 -2px;
     background: #ff9a4d;
     box-shadow: 0 10px 30px rgba(249, 134, 45, 0.4);
 }
@@ -2290,6 +2292,10 @@ a.client-card:hover {
     box-shadow: inset 0 0 0 1px rgba(249, 134, 45, 0.4);
 }
 
+.callout .link-arrow {
+    margin-top: 10px;
+}
+
 .callout > .icon {
     margin-top: 3px;
     color: var(--accent-ink);
@@ -2695,6 +2701,11 @@ a.contact-item:hover {
 .policy-content {
     color: var(--text-2);
     line-height: 1.65;
+}
+
+.policy-page {
+    max-width: 760px;
+    margin-inline: auto;
 }
 
 .policy-content h3 {
@@ -3266,30 +3277,162 @@ a.req:hover {
         white-space: nowrap;
     }
 
-    .bento {
-        gap: 14px;
+    /* Safari fierft d'Adressbar no der Kopfzeil, dofir net duerchsichteg */
+    .site-header {
+        background: var(--navy);
     }
 
+    /* Servicer, Clienten, Team & Co. ëmmer zwee nebeneneen */
+    .bento {
+        gap: 12px;
+    }
+
+    .tile--web,
     .tile--app,
-    .tile--ai {
-        grid-column: span 6;
+    .tile--ai,
+    .tile--sme {
+        grid-column: span 3;
+    }
+
+    .tile,
+    .why,
+    .req,
+    .client-body {
+        overflow-wrap: break-word;
+        -webkit-hyphens: auto;
+        hyphens: auto;
     }
 
     .tile {
         min-height: 0;
+        padding: 18px 16px;
+        border-radius: var(--radius-lg);
     }
 
-    .mock-phone {
-        margin-bottom: -110px;
+    .tile-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+        font-size: 1rem;
     }
 
-    .team-grid {
-        grid-template-columns: minmax(0, 420px);
+    .tile h3 {
+        font-size: 1.05rem;
+        line-height: 1.25;
     }
 
+    .tile p {
+        font-size: 0.86rem;
+        line-height: 1.45;
+    }
+
+    .tile .link-arrow {
+        font-size: 0.86rem;
+    }
+
+    .tile--web .tile-visual,
+    .tile--app .tile-visual,
+    .tile--ai .tile-visual {
+        display: none;
+    }
+
+    .tile--sme .tile-visual {
+        padding-top: 16px;
+    }
+
+    .tile--sme .big-num {
+        font-size: 3rem;
+    }
+
+    .tile--sme .big-num-label {
+        font-size: 0.8rem;
+    }
+
+    .team-grid,
+    .client-grid,
     .why-grid,
-    .why-grid--3 {
-        grid-template-columns: minmax(0, 1fr);
+    .why-grid--3,
+    .req-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    /* Eenzelt lescht Element an der Mëtt */
+    .team-grid > :last-child:nth-child(odd),
+    .client-grid > :last-child:nth-child(odd),
+    .why-grid > :last-child:nth-child(odd),
+    .req-grid > :last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+
+    .team-grid > :last-child:nth-child(odd) {
+        justify-self: center;
+        width: calc(50% - 6px);
+    }
+
+    .member figcaption {
+        padding: 12px 14px 14px;
+    }
+
+    .member-name {
+        font-size: 1rem;
+    }
+
+    .member-meta {
+        font-size: 0.82rem;
+    }
+
+    .client-logo-box {
+        height: 120px;
+        padding: 18px;
+    }
+
+    .client-logo-box img {
+        max-height: 80px;
+    }
+
+    .client-body {
+        gap: 6px;
+        padding: 14px 14px 16px;
+    }
+
+    .client-body h3 {
+        font-size: 1.02rem;
+    }
+
+    .client-body p {
+        font-size: 0.86rem;
+    }
+
+    .why,
+    .req {
+        padding: 18px 16px;
+        border-radius: var(--radius);
+    }
+
+    .why > .icon {
+        margin-bottom: 12px;
+        font-size: 1.25rem;
+    }
+
+    .why h3,
+    .req h3 {
+        font-size: 1rem;
+    }
+
+    .why p,
+    .req p {
+        font-size: 0.86rem;
+        line-height: 1.45;
+    }
+
+    .req-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+        font-size: 1rem;
     }
 
     .field-row {
@@ -3345,8 +3488,7 @@ a.req:hover {
     }
 
     .footer-main {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 32px;
+        gap: 32px 20px;
     }
 
     .footer-bottom {
