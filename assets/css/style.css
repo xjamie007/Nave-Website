@@ -3304,6 +3304,31 @@ a.req:hover {
         padding-top: 0;
     }
 
+    /* "Méi iwwer …"-Linken an de Kaarten op enger Héicht */
+    .tile .link-arrow {
+        margin-top: auto;
+        padding-top: 12px;
+    }
+
+    /* Startsäit uewen: méi Loft, Knäppercher nebeneneen */
+    [data-page="home"] .hero-kicker {
+        margin-bottom: 8svh;
+    }
+
+    [data-page="home"] .hero-actions {
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin-top: 9svh;
+    }
+
+    [data-page="home"] .hero-actions .btn {
+        flex: 1 1 0;
+        width: auto;
+        min-height: 54px;
+        padding: 10px 14px;
+        font-size: 0.92rem;
+    }
+
     /* Servicer, Clienten, Team & Co. ëmmer zwee nebeneneen */
     .bento {
         gap: 12px;
@@ -3353,23 +3378,15 @@ a.req:hover {
         font-size: 0.86rem;
     }
 
-    .tile--web .tile-visual,
-    .tile--app .tile-visual,
-    .tile--ai .tile-visual {
+    .tile .tile-visual {
         display: none;
     }
 
-    .tile--sme .tile-visual {
-        padding-top: 16px;
+    .tile .link-arrow {
+        -webkit-hyphens: manual;
+        hyphens: manual;
     }
 
-    .tile--sme .big-num {
-        font-size: 3rem;
-    }
-
-    .tile--sme .big-num-label {
-        font-size: 0.8rem;
-    }
 
     .team-grid,
     .client-grid,
