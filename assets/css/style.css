@@ -435,7 +435,7 @@ textarea {
 }
 
 /* Déi aktuell Säit: wäisse Pill, gutt ze gesinn */
-.main-nav a[aria-current="page"] {
+.main-nav a[aria-current] {
     background: #fff;
     color: var(--navy);
     font-weight: 600;
@@ -774,6 +774,19 @@ main {
 .section-foot {
     margin-top: clamp(36px, 5vw, 56px);
     text-align: center;
+}
+
+/* Linken op déi aner Themesäiten */
+.related-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 32px;
+}
+
+.req-num {
+    font-size: 1.15rem;
+    font-weight: 700;
 }
 
 /* ---------- Hero (Haaptsäit) ---------- */

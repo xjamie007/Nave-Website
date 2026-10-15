@@ -191,7 +191,7 @@
        aktuell Säit net ganz ze gesinn ass, gëtt se mëll an d'Bild gerréckelt. ---- */
     function centerActiveTab(smooth) {
         const nav = $('.main-nav');
-        const current = $('.main-nav a[aria-current="page"]');
+        const current = $('.main-nav a[aria-current]');
         if (!nav) return;
         const scrollable = nav.scrollWidth > nav.clientWidth + 1;
         nav.classList.toggle('is-scrollable', scrollable);

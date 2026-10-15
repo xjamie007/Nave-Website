@@ -320,4 +320,164 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/privacy.html"/>
   </url>
+  <url>
+    <loc>https://nave.lu/web-design.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/web-design.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/de/web-design.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/web-design.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/fr/web-design.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/web-design.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/en/web-design.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/web-design.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/web-design.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/app-development.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/app-development.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/de/app-development.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/app-development.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/fr/app-development.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/app-development.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/en/app-development.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/app-development.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/ai-agents.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/ai-agents.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/de/ai-agents.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/ai-agents.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/fr/ai-agents.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/ai-agents.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/en/ai-agents.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/ai-agents.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/ai-agents.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/sme-package-ai.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sme-package-ai.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/de/sme-package-ai.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sme-package-ai.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/fr/sme-package-ai.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sme-package-ai.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/en/sme-package-ai.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sme-package-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sme-package-ai.html"/>
+  </url>
 </urlset>
