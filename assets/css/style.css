@@ -1544,6 +1544,91 @@ a.client-card:hover {
     margin-top: 6px;
 }
 
+.client-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* ---------- Projet-Säit (z. B. Blackstar Mersch) ---------- */
+
+.project-video {
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--navy-deep);
+    box-shadow: var(--shadow);
+}
+
+.project-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 32px;
+    border-radius: var(--radius-xl);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-card p {
+    color: var(--text-2);
+}
+
+.project-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.btn-store {
+    gap: 10px;
+    background: #000;
+    color: #fff;
+}
+
+.btn-store:hover {
+    background: #1d1d1f;
+}
+
+.btn-store .icon {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.btn-store-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    text-align: left;
+    font-size: 1.05rem;
+}
+
+.btn-store-text small {
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.project-back {
+    margin-top: 40px;
+    text-align: center;
+}
+
 /* ---------- Team ---------- */
 
 .team-grid {
