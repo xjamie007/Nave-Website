@@ -339,7 +339,8 @@ textarea {
     transition: translate 0.35s var(--ease);
 }
 
-.link-arrow:hover {
+/* Just den Text ënnersträichen, net de Feil */
+.link-arrow:hover > span {
     text-decoration: underline;
     text-underline-offset: 4px;
 }
@@ -1507,6 +1508,7 @@ a.client-card:hover {
 }
 
 .client-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1535,13 +1537,15 @@ a.client-card:hover {
     --logo-bg: linear-gradient(135deg, #e0336b 0%, #a33a98 30%, #5c45bd 62%, #2d55d4 100%);
 }
 
-.client-card--sauerbeen .tag {
+.tag--app {
     background: linear-gradient(135deg, rgba(224, 51, 107, 0.12), rgba(45, 85, 212, 0.12));
     color: #4a3ab4;
 }
 
+/* "Projet ukucken" & Co. ëmmer ganz ënnen an der Kaart, op enger Héicht */
 .client-body .link-arrow {
-    margin-top: 6px;
+    margin-top: auto;
+    padding-top: 6px;
 }
 
 .client-tags {
