@@ -181,6 +181,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/blackstar-mersch.html"/>
   </url>
   <url>
+    <loc>https://nave.lu/sauerbeen.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sauerbeen.html"/>
+  </url>
+  <url>
     <loc>https://nave.lu/de/references.html</loc>
     <lastmod>2026-10-06</lastmod>
     <priority>0.7</priority>
@@ -199,6 +209,16 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/blackstar-mersch.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/blackstar-mersch.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/blackstar-mersch.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/de/sauerbeen.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sauerbeen.html"/>
   </url>
   <url>
     <loc>https://nave.lu/fr/references.html</loc>
@@ -221,6 +241,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/blackstar-mersch.html"/>
   </url>
   <url>
+    <loc>https://nave.lu/fr/sauerbeen.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sauerbeen.html"/>
+  </url>
+  <url>
     <loc>https://nave.lu/en/references.html</loc>
     <lastmod>2026-10-06</lastmod>
     <priority>0.7</priority>
@@ -239,6 +269,16 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/blackstar-mersch.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/blackstar-mersch.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/blackstar-mersch.html"/>
+  </url>
+  <url>
+    <loc>https://nave.lu/en/sauerbeen.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nave.lu/fr/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nave.lu/en/sauerbeen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nave.lu/sauerbeen.html"/>
   </url>
   <url>
     <loc>https://nave.lu/team.html</loc>

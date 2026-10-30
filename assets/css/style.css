@@ -1628,6 +1628,22 @@ a.client-card:hover {
     opacity: 0.8;
 }
 
+.project-grid--single {
+    grid-template-columns: 1fr;
+    max-width: 760px;
+}
+
+.store-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.project-card .store-buttons .btn {
+    margin-top: 0;
+}
+
 .project-back {
     margin-top: 40px;
     text-align: center;
