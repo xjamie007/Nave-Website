@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nave.lu/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://nave.lu/de/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/"/>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://nave.lu/fr/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/"/>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://nave.lu/en/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/"/>
@@ -282,7 +282,7 @@
   </url>
   <url>
     <loc>https://nave.lu/team.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/team.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/team.html"/>
@@ -292,7 +292,7 @@
   </url>
   <url>
     <loc>https://nave.lu/de/team.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/team.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/team.html"/>
@@ -302,7 +302,7 @@
   </url>
   <url>
     <loc>https://nave.lu/fr/team.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/team.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/team.html"/>
@@ -312,7 +312,7 @@
   </url>
   <url>
     <loc>https://nave.lu/en/team.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="lb" href="https://nave.lu/team.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://nave.lu/de/team.html"/>
