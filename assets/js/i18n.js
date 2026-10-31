@@ -7,9 +7,9 @@
 window.NAVE_I18N = {
     lu: {
         "form.error": "D’Ufro konnt net geschéckt ginn. Probéiert w.e.g. nach eng Kéier oder schreift eis op {email}.",
-        "form.sending": "Gëtt geschéckt...",
+        "form.sending": "Gëtt geschéckt …",
         "form.success": "Merci. Mir hunn Är Ufro kritt a mellen eis bannent 24 Stonnen.",
-        "sme.calc.hint": "Den SME Package Digital gëllt fir Projeten tëscht 3.000 € an 25.000 € ouni TVA."
+        "sme.calc.hint": "Den SME Package Digital gëllt fir Projeten tëscht 3.000 € a 25.000 € ouni TVA."
     },
     de: {
         "a11y.breadcrumb": "Brotkrumen-Navigation",
