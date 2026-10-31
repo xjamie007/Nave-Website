@@ -1537,6 +1537,7 @@ a.client-card:hover {
     --logo-bg: linear-gradient(135deg, #e0336b 0%, #a33a98 30%, #5c45bd 62%, #2d55d4 100%);
 }
 
+/* Etikett "App" ass ëmmer blo (class="tag tag--app"), "Websäit" bleift orange (class="tag") */
 .tag--app {
     background: linear-gradient(135deg, rgba(224, 51, 107, 0.12), rgba(45, 85, 212, 0.12));
     color: #4a3ab4;
